@@ -7,15 +7,7 @@ const mongoose = require('mongoose');
 
 
 client.commands = new Map();
-mongoose.connect(process.env.mongodb_srv, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-}).then(()=>{
-    console.log('Connected to the database!');
-}).catch((err) => {
-    console.log(err);
-});
+
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);

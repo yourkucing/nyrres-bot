@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const profileModel = require('../models/profileSchema');
 
 module.exports.run = async(client, msg) =>{
-    msg.channel.send(`Greetings, ${msg.guild.members.cache.get(msg.author.id).displayName}. Please key in your (character name, race, class): ("exit" to exit.)\nExample: Athur Thorac, Human, Rogue`);
+    msg.channel.send(`Greetings, ${msg.guild.members.cache.get(msg.author.id).displayName}. Please key in your character name: ("exit" to exit.)`);
     msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
         if (collected.first().content.toLowerCase() == 'exit') {
             msg.channel.send("Goodbye for now!");
@@ -17,8 +17,8 @@ module.exports.run = async(client, msg) =>{
                 else {
                     classInput = collected.first().content;
                     let profile = profileModel.create({
-                        userID: m.author.id,
-                        serverID: m.author.guild.id,
+                        userID: msg.author.id,
+                        serverID: msg.author.guild.id,
                         characterName: nameInput,
                         className: classInput,
                         race: null

@@ -6,7 +6,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 
-client.commands = new Discord.Collection();
+client.commands = new Map();
 
 mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
@@ -33,8 +33,8 @@ client.on('ready', () => {
     }
     
     if (!msg.content.toLowerCase().startsWith(prefix) || msg.author.bot) return;
-    const args = msg.content.slice(prefix.length).split(new RegExp(/\s+/));
-    const command = args.shift().toLowerCase();
+    let args = msg.content.slice(prefix.length).split(new RegExp(/\s+/));
+    let command = args.shift();
     
     // -----------------------------------------------------------------------------------------------------------------------------------------------------
     
@@ -70,8 +70,6 @@ client.on('ready', () => {
                  if(file.endsWith(".js")) {
                      let cmdName = file.substring(0, file.indexOf(".js"));
                      let cmdModule = require(path.join(__dirname, dir, file));
-                     console.log(cmdName);
-                     console.log(cmdModule);
                      client.commands.set(cmdName, cmdModule);
                  }
              }

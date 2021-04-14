@@ -8,8 +8,8 @@ const path = require('path');
 client.commands = new Map();
 
 client.on('ready', () => {
- console.log(`Logged in as ${client.user.tag}!`);
- client.user.setActivity('uwu help', { type: 'STREAMING' });
+    console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setActivity('uwu help', { type: 'STREAMING' });
  });
 
 client.on('message', msg => {

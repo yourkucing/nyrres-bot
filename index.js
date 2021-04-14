@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 client.commands = new Map();
 
-mongoose.connect(process.env.mongodb_srv, {
+mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -29,7 +29,7 @@ client.on('message', msg => {
         if (msg.content.toLowerCase() === 'hi nyrres') {
             if (msg.author.bot) return;
             else {
-                msg.channel.send(process.env.mongodb_srv);
+                msg.channel.send(process.env.MONGODB_SRV);
             }
         }
     });

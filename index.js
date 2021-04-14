@@ -27,7 +27,7 @@ client.on('ready', () => {
  client.on('message', msg => {
     let profileData;
     try {
-        profileData = profileModel.findOne({ userID: msg.author.id})
+        profileData = profileModel.find({ userID: msg.author.id})
         if(!profileData){
             msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using __ny profileCreate__!`)
         }

@@ -1,6 +1,14 @@
 const profileModel = require('../models/profileSchema');
 const Discord = require('discord.js');
 
-module.exports.run = async(client, msg, profileData) => {
-    msg.channel.send(`Your character name is ${profileData.characterName}.`)
+module.exports.run = async(client, msg) => {
+    profileData = profileModel.find({ userID: msg.author.id})
+    if(!profileData){
+        msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using __ny profileCreate__!`)
+    }
+    else {
+        msg.channel.send(`Your character name is ${profileData.characterName}.`)
+        msg.channel.send(profileData)
+    }
+
 }

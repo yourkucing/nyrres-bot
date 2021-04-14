@@ -17,11 +17,11 @@ module.exports.run = async(client, msg) =>{
                 else {
                     classInput = collected.first().content;
                     let profile = profileModel.create({
-                        userID = m.author.id,
-                        serverID = m.author.guild.id,
-                        characterName = nameInput,
-                        className = classInput,
-                        race = None
+                        userID: m.author.id,
+                        serverID: m.author.guild.id,
+                        characterName: nameInput,
+                        className: classInput,
+                        race: null
                     });
                     profile.save();
                 }

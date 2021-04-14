@@ -23,39 +23,56 @@ client.on('ready', () => {
     client.user.setActivity('ny help', { type: 'STREAMING' });
  });
 
-client.on('message', msg => {
+ client.on('message', msg => {
+    var message = msg.content.toLowerCase()
+
     if (msg.author.bot) return
-
-        if (msg.content.toLowerCase() === 'hi nyrres') {
-            if (msg.author.bot) return;
-            else {
-                msg.channel.send(process.env.MONGODB_SRV);
-            }
-        }
-
+    if (message.includes('hi nyrres')) {
+        msg.channel.send('Greetings ' + msg.author.toString() +'! I hope you\'re having a lovely day!');
+    }
+    
     if (!msg.content.toLowerCase().startsWith(prefix) || msg.author.bot) return;
     const args = msg.content.slice(prefix.length).split(new RegExp(/\s+/));
     const command = args.shift().toLowerCase();
-
-    if(client.commands.get(command)) {
-        client.commands.get(command).run(client, msg, args).catch((e) => { console.log(e); });
-    }
-});
-
-(async function registerCommands(dir = 'commands') {
-    let files = await fs.readdir(path.join(__dirname, dir));
-    for(let file of files) {
-        let stat = await fs.lstat(path.join(__dirname, dir, file));
-        if(stat.isDirectory())
-            registerCommands(path.join(dir, file));
-        else {
-            if(file.endsWith(".js")) {
-                let cmdName = file.substring(0, file.indexOf(".js"));
-                let cmdModule = require(path.join(__dirname, dir, file));
-                client.commands.set(cmdName, cmdModule);
-            }
-        }
-    }
-})();
-
-client.login(process.env.token1);
+    
+    // -----------------------------------------------------------------------------------------------------------------------------------------------------
+    
+     if(client.commands.get(command)) {
+         client.commands.get(command).run(client, msg, args).catch((e) => { console.log(e); });
+     }
+    
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+    
+     
+     if (msg.content === '@nyrres help' || command === 'help' || command === 'command' || command === 'commands') {
+            const embed = new Discord.MessageEmbed()
+            .setColor('#FF69B4')
+            .setTitle(`Commands`)
+            .setDescription('Thank you for using Nyrres bot!')
+            .addFields(
+            { name: 'Commands should be here.'
+            })
+            .setFooter(`Created by Maryam#9206`);
+            msg.author.send(embed);
+            msg.channel.send(`Let's move this to your DMs, **${msg.guild.members.cache.get(msg.author.id).displayName}**, shall we?`)
+     }
+     
+     });
+     
+     (async function registerCommands(dir = 'commands') {
+         let files = await fs.readdir(path.join(__dirname, dir));
+         for(let file of files) {
+             let stat = await fs.lstat(path.join(__dirname, dir, file));
+             if(stat.isDirectory())
+                 registerCommands(path.join(dir, file));
+             else {
+                 if(file.endsWith(".js")) {
+                     let cmdName = file.substring(0, file.indexOf(".js"));
+                     let cmdModule = require(path.join(__dirname, dir, file));
+                     client.commands.set(cmdName, cmdModule);
+                 }
+             }
+         }
+     })();
+    
+    client.login(process.env.token1);

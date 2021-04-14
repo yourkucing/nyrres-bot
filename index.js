@@ -25,6 +25,16 @@ client.on('ready', () => {
  });
 
  client.on('message', msg => {
+    let profileData;
+    try {
+        profileData = profileModel.findOne({ userID: msg.author.id})
+        if(!profileData){
+            msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using __ny profileCreate__!`)
+        }
+    } catch (err){
+        console.log(err);
+    }
+
     var message = msg.content.toLowerCase()
 
     if (msg.author.bot) return
@@ -39,7 +49,7 @@ client.on('ready', () => {
     // -----------------------------------------------------------------------------------------------------------------------------------------------------
     
      if(client.commands.get(command)) {
-         client.commands.get(command).run(client, msg, args).catch((e) => { console.log(e); });
+         client.commands.get(command).run(client, msg, profileData).catch((e) => { console.log(e); });
      }
     
     //-----------------------------------------------------------------------------------------------------------------------------------------

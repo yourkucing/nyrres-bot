@@ -1,7 +1,7 @@
 const profileModel = require('../models/profileSchema');
 const Discord = require('discord.js');
 
-module.exports.run = async(client, msg, args) => {
+module.exports.run = async(client, msg) => {
 	let hooman = msg.author.id
 	let guild = msg.guild.id
 	msg.channel.send(hooman, guild)
@@ -26,7 +26,6 @@ module.exports.run = async(client, msg, args) => {
                         className: classInput,
                         race: null
                     });
-                    profile.save();
                 }
             })
         }

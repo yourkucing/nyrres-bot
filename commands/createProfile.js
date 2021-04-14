@@ -33,5 +33,5 @@
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
-	return msg.channel.send(`${msg.author} and ${msg.author.id}`);
+	return msg.channel.send(msg.author.id);
 }

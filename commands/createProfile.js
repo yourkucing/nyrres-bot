@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
 	let hooman = msg.author.id
-	let guild = msg.author.guild.id
+	let guild = msg.guild.id
 	msg.channel.send(hooman, guild)
     msg.channel.send(`Greetings, ${msg.guild.members.cache.get(msg.author.id).displayName}. Please key in your character name: ("exit" to exit.)`);
     msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {

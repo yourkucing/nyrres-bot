@@ -16,7 +16,7 @@ module.exports.run = async(client, msg) =>{
                 }
                 else {
                     classInput = collected.first().content;
-                    let profile = await profileModel.create({
+                    let profile = profileModel.create({
                         userID = msg.author.id,
                         serverID = msg.author.guild.id,
                         characterName = nameInput,

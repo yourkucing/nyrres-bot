@@ -29,7 +29,7 @@ client.on('message', msg => {
         if (msg.content.toLowerCase() === 'hi nyrres') {
             if (msg.author.bot) return;
             else {
-                msg.channel.send('hello!');
+                msg.channel.send(process.env.mongodb_srv);
             }
         }
     });

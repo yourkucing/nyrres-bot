@@ -32,6 +32,30 @@ client.on('message', msg => {
                 msg.channel.send(process.env.MONGODB_SRV);
             }
         }
-    });
+
+    if (!msg.content.toLowerCase().startsWith(prefix) || msg.author.bot) return;
+    const args = msg.content.slice(prefix.length).split(new RegExp(/\s+/));
+    const command = args.shift().toLowerCase();
+
+    if(client.commands.get(command)) {
+        client.commands.get(command).run(client, msg, args).catch((e) => { console.log(e); });
+    }
+});
+
+(async function registerCommands(dir = 'commands') {
+    let files = await fs.readdir(path.join(__dirname, dir));
+    for(let file of files) {
+        let stat = await fs.lstat(path.join(__dirname, dir, file));
+        if(stat.isDirectory())
+            registerCommands(path.join(dir, file));
+        else {
+            if(file.endsWith(".js")) {
+                let cmdName = file.substring(0, file.indexOf(".js"));
+                let cmdModule = require(path.join(__dirname, dir, file));
+                client.commands.set(cmdName, cmdModule);
+            }
+        }
+    }
+})();
 
 client.login(process.env.token1);

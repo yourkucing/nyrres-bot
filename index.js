@@ -61,18 +61,19 @@ client.on('ready', () => {
      
      (async function registerCommands(dir = 'commands') {
          let files = await fs.readdir(path.join(__dirname, dir));
-         for(let file of files) {
-             let stat = await fs.lstat(path.join(__dirname, dir, file));
-             if(stat.isDirectory())
-                 registerCommands(path.join(dir, file));
-             else {
-                 if(file.endsWith(".js")) {
-                     let cmdName = file.substring(0, file.indexOf(".js"));
-                     let cmdModule = require(path.join(__dirname, dir, file));
-                     client.commands.set(cmdName, cmdModule);
-                 }
-             }
-         }
+         console.log(files);
+        //  for(let file of files) {
+        //      let stat = await fs.lstat(path.join(__dirname, dir, file));
+        //      if(stat.isDirectory())
+        //          registerCommands(path.join(dir, file));
+        //      else {
+        //          if(file.endsWith(".js")) {
+        //              let cmdName = file.substring(0, file.indexOf(".js"));
+        //              let cmdModule = require(path.join(__dirname, dir, file));
+        //              client.commands.set(cmdName, cmdModule);
+        //          }
+        //      }
+        //  }
      })();
     
     client.login(process.env.token1);

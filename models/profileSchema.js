@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const profileSchema = new mongoose.Schema({
     userID: { type: String, require: true, unique: true},
     serverID: { type: String, require: true},
-    characterName: { type: String, default: None},
-    className: { type: String, default: None},
-    race: { type: String, default: None}
+    characterName: { type: String, default: null},
+    className: { type: String, default: null},
+    race: { type: String, default: null}
 })
 
 const model = mongoose.model('ProfileModels', profileSchema);

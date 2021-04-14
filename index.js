@@ -71,7 +71,7 @@ client.on('ready', () => {
                      let cmdModule = require(path.join(__dirname, dir, file));
                      console.log(cmdName);
                      console.log(cmdModule);
-                     //client.commands.set(cmdName, cmdModule);
+                     client.commands.set(cmdName, cmdModule);
                  }
              }
          }

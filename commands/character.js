@@ -2,8 +2,10 @@ const profileModel = require('../models/profileSchema');
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg) => {
-    profileData = profileModel.find({ userID: msg.author.id})
-    if(!profileData){
+	let hooman = msg.author.id
+	let guild = msg.guild.id
+    profileData = profileModel.find({ userID: hooman})
+    if(profileData === null){
         msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using __ny profileCreate__!`)
     }
     else {

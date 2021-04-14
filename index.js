@@ -4,7 +4,7 @@ const prefix = "ny ";
 const fs = require('fs').promises;
 const path = require('path');
 const mongoose = require('mongoose');
-const profileModel = require('../models/profileSchema');
+const profileModel = require('./models/profileSchema');
 
 client.commands = new Map();
 

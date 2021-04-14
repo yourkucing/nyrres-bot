@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const profileModel = require('../models/profileSchema');
 
-module.exports.run = async(client, msg) =>{
+module.exports.run = async(client, msg, args) => {
 	msg.channel.send(msg.author);
     // msg.channel.send(`Greetings, ${msg.guild.members.cache.get(msg.author.id).displayName}. Please key in your character name: ("exit" to exit.)`);
     // msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {

@@ -58,7 +58,7 @@ module.exports.run = async(client, msg, args) => {
         if (cond.length < 1) {
             cond.push("You have no conditions currently.")
         }
-        url = `https://cdn.discordapp.com/${hooman}/${msg.author.avatar}.png`
+        url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         console.log(url)
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
@@ -69,8 +69,7 @@ module.exports.run = async(client, msg, args) => {
 		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
 		{ name: 'Conditions', value: `${cond}` }
 		)
-        // .setThumbnail(`${url}`);
-        .setThumbnail('https://i.imgur.com/wSTFkRM.png');
+        .setThumbnail(`${url}`);
 		msg.channel.send(embed);
     }
 }

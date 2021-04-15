@@ -7,7 +7,8 @@ module.exports.run = async(client, msg, args) => {
     if (!deleteData) {
         msg.channel.send(`Sorry ${msg.author}, you don't have a character!`)
     }
-    else if (deleteData.acknowledged == true) {
+    else {
+        console.log(deleteData)
         msg.channel.send(`Character deleted!`)
     }
 }

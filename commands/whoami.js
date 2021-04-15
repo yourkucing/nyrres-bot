@@ -61,12 +61,12 @@ module.exports.run = async(client, msg, args) => {
 
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
-		.setTitle(`**${hooman.displayName}'s** Character Profile`)
+		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)
 		.setDescription('You can see your character profile here.')
 		.addFields(
-		{ value: `Character Name: ${profileData.characterName}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}`},
-		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`}
-		// { name: 'Conditions', value: `${cond}` },
+		{ name: 'Profile', value: `Character Name: ${profileData.characterName}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}`},
+		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
+		{ name: 'Conditions', value: `${cond}` }
 		);
         // .setThumbnail(hooman.avatarURL());
 		msg.channel.send(embed);

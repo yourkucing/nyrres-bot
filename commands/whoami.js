@@ -55,7 +55,7 @@ module.exports.run = async(client, msg, args) => {
             cond.push("Exhaustion")
         }
 
-        if (cond.length < 0) {
+        if (cond.length < 1) {
             cond.push("You have no conditions currently.")
         }
 

@@ -47,7 +47,7 @@ client.on('ready', () => {
     let command = args.shift();
     
     // -----------------------------------------------------------------------------------------------------------------------------------------------------
-    
+    console.log(command)
      if(client.commands.get(command)) {
          client.commands.get(command).run(client, msg, args, ProfileData).catch((e) => { console.log(e); });
      }

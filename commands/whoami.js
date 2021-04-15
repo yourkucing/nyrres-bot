@@ -70,7 +70,7 @@ module.exports.run = async(client, msg, args) => {
 		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
 		// { name: 'Conditions', value: `${cond}` }
 		)
-        .setThumbnail(hooman.avatarURL());
+        .setThumbnail(hooman.avatarURL);
 		msg.channel.send(embed);
     }
 }

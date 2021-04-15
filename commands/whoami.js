@@ -65,7 +65,7 @@ module.exports.run = async(client, msg, args) => {
 		.setDescription('You can see your character profile here.')
 		.addFields(
 		{ value: `Character Name: ${profileData.characterName}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}`},
-		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`,
+		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
 		{ name: 'Conditions', value: `${cond}` },
 		)
         .setThumbnail(hooman.avatarURL());

@@ -39,7 +39,7 @@ module.exports.run = async(client, msg, args) => {
                                         n = 0
                                         L = []
                                         while (n < 3) {
-                                            result = Math.floor(Math.random() * dice[1]) + 1
+                                            result = Math.floor(Math.random() * 6) + 1
                                             L.push(result)
                                             n = n + 1
                                         }

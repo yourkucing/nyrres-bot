@@ -4,7 +4,7 @@ const profileSchema = new mongoose.Schema({
     userID: { type: String, require: true, unique: true},
     serverID: { type: String, require: true},
     characterName: { type: String, default: null},
-    className: { type: String, default: null},
+    class: { type: String, default: null},
     race: { type: String, default: null},
     level: { type: Number, default: 1},
     alignment: { type: String, default: null},

@@ -47,8 +47,33 @@ module.exports.run = async(client, msg, args) => {
                                         msg.channel.send("```\nResult: " + total + "\nDetails: 3d6 (" + L + ")\n```");
                                         ability.push(total)
                                         times = times + 1
-                                    msg.channel.send(ability)
                                     }
+                                    msg.channel.send(`**Your ability points:**\nStrength: ${ability[0]}\nDexterity: ${ability[1]}\nConstitution: ${ability[2]}\nIntellect: ${ability[3]}\nWisdom: ${ability[4]}\nCharisma: ${ability[5]}`);
+
+                                    let profile;
+                                    try {
+                                        profile = profileModel.create({
+                                            userID: hooman,
+                                            serverID: guild,
+                                            characterName: nameInput,
+                                            class: classInput,
+                                            race: raceInput,
+                                            alignment: alignmentInput,
+                                            ability: {
+                                                strength: ability[0],
+                                                dexterity: ability[1],
+                                                constitution: ability[2],
+                                                intellect: ability[3],
+                                                wisdom: ability[4],
+                                                charisma: ability[5]
+                                            }
+                                        });
+                                        profile.save(); 
+                                        msg.channel.send(`Character saved!`)
+                                    } catch (err) {
+                                        console.log(err)
+                                    }
+                                    
                                 }
                             });
 

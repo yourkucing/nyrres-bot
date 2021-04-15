@@ -4,13 +4,13 @@ const Discord = require('discord.js');
 module.exports.run = async(client, msg) => {
 	let hooman = msg.author.id
 	let guild = msg.guild.id
-    profileData = profileModel.find({ userID: hooman})
-    if(profileData === null){
+    profileData = profileModel.findOne({ userID: '279101053750870017'})
+    if(!profileData){
         msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using __ny profileCreate__!`)
     }
     else {
         msg.channel.send(`Your character name is ${profileData.characterName}.`)
-        msg.channel.send(profileData)
+        console.log(profileData)
     }
 
 }

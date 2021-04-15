@@ -58,7 +58,7 @@ module.exports.run = async(client, msg, args) => {
         if (cond.length < 1) {
             cond.push("You have no conditions currently.")
         }
-        console.log(msg.author)
+        console.log(msg.author.id)
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)

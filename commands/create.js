@@ -52,7 +52,7 @@ module.exports.run = async(client, msg, args) => {
 
                                     let profile;
                                     try {
-                                        profile = profileModel.create({
+                                        profile = new profileModel.create({
                                             userID: hooman,
                                             serverID: guild,
                                             characterName: nameInput,
@@ -68,7 +68,7 @@ module.exports.run = async(client, msg, args) => {
                                                 charisma: ability[5]
                                             }
                                         });
-                                        profile.save(); 
+                                        profile.save();
                                         msg.channel.send(`Character saved!`)
                                     } catch (err) {
                                         console.log(err)

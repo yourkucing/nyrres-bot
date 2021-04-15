@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports.run = async(client, msg) => {
 	let hooman = msg.author.id
 	let guild = msg.guild.id
-    profileData = profileModel.find()
+    profileData = await profileModel.findOne({userID: hooman})
     if(!profileData){
         msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using __ny profileCreate__!`)
     }

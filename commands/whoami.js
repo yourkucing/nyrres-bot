@@ -58,7 +58,7 @@ module.exports.run = async(client, msg, args) => {
         if (cond.length < 1) {
             cond.push("You have no conditions currently.")
         }
-        console.log(msg.author.id)
+        url = `https://cdn.discordapp.com/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)
@@ -68,7 +68,7 @@ module.exports.run = async(client, msg, args) => {
 		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
 		{ name: 'Conditions', value: `${cond}` }
 		)
-        .setThumbnail(msg.author.avatarURL);
+        .setThumbnail(url);
 		msg.channel.send(embed);
     }
 }

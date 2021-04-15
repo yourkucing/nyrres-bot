@@ -59,7 +59,6 @@ module.exports.run = async(client, msg, args) => {
             cond.push("You have no conditions currently.")
         }
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
-        console.log(url)
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)

@@ -49,7 +49,7 @@ client.on('ready', () => {
     // -----------------------------------------------------------------------------------------------------------------------------------------------------
     console.log(command)
      if(client.commands.get(command)) {
-         client.commands.get(command).run(client, msg, args, ProfileData).catch((e) => { console.log(e); });
+         client.commands.get(command).run(client, msg, args).catch((e) => { console.log(e); });
      }
     
     //-----------------------------------------------------------------------------------------------------------------------------------------

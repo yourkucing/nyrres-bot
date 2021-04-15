@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = async(client, msg, args, ProfileData) => {
+module.exports.run = async(client, msg, args) => {
     dice = args[0].split("d")
     if (dice[0] === "") {
         result = Math.floor(Math.random() * dice[1]) + 1

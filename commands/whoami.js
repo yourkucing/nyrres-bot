@@ -1,7 +1,7 @@
 const profileModel = require('../models/profileSchema');
 const Discord = require('discord.js');
 
-module.exports.run = async(client, msg, args, profileData) => {
+module.exports.run = async(client, msg, args) => {
 	let hooman = msg.author.id
 	let guild = msg.guild.id
     profileData = await profileModel.findOne({userID: hooman})

@@ -197,6 +197,7 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
+                                                msg.channel.send(ability)
                                                 shuffle(ability)
                                                 msg.channel.send(ability)
                                                 dexterity = ability[0]

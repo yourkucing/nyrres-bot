@@ -1,4 +1,5 @@
 const profileModel = require('../models/profileSchema');
+const moneyModel = require('../models/moneySchema');
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
@@ -8,6 +9,7 @@ module.exports.run = async(client, msg, args) => {
         msg.channel.send(`Sorry ${msg.author}, you don't have a character!`)
     }
     else {
+        deleteMoney = await moneyModel.deleteOne({userID: hooman})
         msg.channel.send(`Character deleted!`)
     }
 }

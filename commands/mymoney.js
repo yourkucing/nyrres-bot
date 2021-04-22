@@ -138,12 +138,16 @@ module.exports.run = async(client, msg, args) => {
                 userID: profileData.userID,
                 serverID: profileData.guildID,
                 characterName: profileData.characterName,
-                money: money
+                money: {
+                    gold: money
+                }
             });
             msg.channel.send(`What class are you? Oh! A ${profileData.class}? How fascinating. Oh! Here you go, your wallet is all set up. Have a nice day!`)
         } catch (err) {
             console.log(err)
         }
+
+        moneyData = await moneyModel.findOne({userID: hooman})
 
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()
@@ -151,7 +155,7 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Money`)
 		.setDescription('You can see your money here.')
 		.addFields(
-		{ name: 'Your wallet', value: `Character Name: ${moneyData.characterName}\nMoney: ${moneyData.money} gp`}
+		{ name: `Name: ${moneyData.characterName}`, value: `Copper: ${moneyData.money.copper} cp\nSilver: ${moneyData.money.silver} sp\nElectrum: ${moneyData.money.electrum} ep\nGold: ${moneyData.money.gold} gp\nPlatinum: ${moneyData.money.platinum} pp`}
 		)
         .setThumbnail(`${url}`);
 		msg.channel.send(embed);
@@ -163,7 +167,7 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Money`)
 		.setDescription('You can see your money here.')
 		.addFields(
-		{ name: 'Profile', value: `Character Name: ${moneyData.characterName}\nMoney: ${moneyData.money} gp`}
+		{ name: `Name: ${moneyData.characterName}`, value: `Copper: ${moneyData.money.copper} cp\nSilver: ${moneyData.money.silver} sp\nElectrum: ${moneyData.money.electrum} ep\nGold: ${moneyData.money.gold} gp\nPlatinum: ${moneyData.money.platinum} pp`}
 		)
         .setThumbnail(`${url}`);
 		msg.channel.send(embed);

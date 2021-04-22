@@ -151,7 +151,7 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Money`)
 		.setDescription('You can see your money here.')
 		.addFields(
-		{ name: 'Profile', value: `Character Name: ${moneyData.characterName}\nMoney: ${moneyData.money} gp`}
+		{ name: 'Your wallet', value: `Character Name: ${moneyData.characterName}\nMoney: ${moneyData.money} gp`}
 		)
         .setThumbnail(`${url}`);
 		msg.channel.send(embed);

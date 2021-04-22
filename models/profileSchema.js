@@ -4,10 +4,12 @@ const profileSchema = new mongoose.Schema({
     userID: { type: String, require: true, unique: true},
     serverID: { type: String, require: true},
     characterName: { type: String, default: null},
+    gender: { type: String, default: 'Nonbinary'},
     class: { type: String, default: null},
     race: { type: String, default: null},
     level: { type: Number, default: 1},
     alignment: { type: String, default: null},
+    proficiency: { type: Number, default: 2},
     ability: {
         strength: { type: Number, default: 0},
         dexterity: { type: Number, default: 0},

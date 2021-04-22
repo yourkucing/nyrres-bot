@@ -61,8 +61,10 @@ client.on('ready', () => {
             .setTitle(`Commands`)
             .setDescription('Thank you for using Nyrres bot!')
             .addFields(
-            { name: 'Commands should be here.'
-            })
+            { name: 'Information', value: `ny race - view the different races\nny class - view the different classes`},
+            { name: `Character`, value: `ny whoami - view your character\nny create - create a character\nny delete - delete your character\nny wallet - view your wallet`},
+            { name: `Gameplay`, value: `ny dice - roll the dice using this format [eg. ny dice 2d6 will roll 2 d6 dice]`}
+            )
             .setFooter(`Created by Maryam#9206`);
             msg.author.send(embed);
             msg.channel.send(`Let's move this to your DMs, **${msg.guild.members.cache.get(msg.author.id).displayName}**, shall we?`)

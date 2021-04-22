@@ -142,23 +142,10 @@ module.exports.run = async(client, msg, args) => {
                     gold: money
                 }
             });
-            msg.channel.send(`What class are you? Oh! A ${profileData.class}? How fascinating. Oh! Here you go, your wallet is all set up. Have a nice day!`)
+            msg.channel.send(`What class are you? Oh! A ${profileData.class}? How fascinating. Oh! Here you go, your wallet is all set up. You can check it using **ny mymoney**. Have a nice day!`)
         } catch (err) {
             console.log(err)
         }
-
-        moneyData = await moneyModel.findOne({userID: hooman})
-
-        url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
-        const embed = new Discord.MessageEmbed()
-		.setColor('#FF69B4')
-		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Money`)
-		.setDescription('You can see your money here.')
-		.addFields(
-		{ name: `Name: ${moneyData.characterName}`, value: `Copper: ${moneyData.money.copper} cp\nSilver: ${moneyData.money.silver} sp\nElectrum: ${moneyData.money.electrum} ep\nGold: ${moneyData.money.gold} gp\nPlatinum: ${moneyData.money.platinum} pp`}
-		)
-        .setThumbnail(`${url}`);
-		msg.channel.send(embed);
     }
     else {
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`

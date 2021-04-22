@@ -64,7 +64,7 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)
 		.setDescription('You can see your character profile here.')
 		.addFields(
-		{ name: 'Profile', value: `Character Name: ${profileData.characterName}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}`},
+		{ name: 'Profile', value: `Character Name: ${profileData.characterName}\nGender: ${profileData.gender}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}\nProficiency Bonus: +${profileData.proficiency}`},
 		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
 		{ name: 'Conditions', value: `${cond}` }
 		)

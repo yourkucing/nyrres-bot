@@ -6,7 +6,7 @@ module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
     u = "no"
     msg.channel.send(`Are you sure you want to delete? (Answer yes or no.)`)
-    msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
+    msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1, time: 30000}).then(collected => {
         if (collected.first().content.toLowerCase() == 'yes') {
             try {
                 deleteData = await profileModel.deleteOne({userID: hooman})
@@ -28,6 +28,8 @@ module.exports.run = async(client, msg, args) => {
         else {
             msg.channel.send(`Oh, no deletion occurred then!`)
         }
-    });
+    }).catch(collected => {
+        msg.channel.send('Oh, it must have been an accident then!');
+        });
 
 }

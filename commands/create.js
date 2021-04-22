@@ -76,7 +76,7 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -87,7 +87,7 @@ module.exports.run = async(client, msg, args) => {
                                                 dexterity = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 strength = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -98,7 +98,7 @@ module.exports.run = async(client, msg, args) => {
                                                 strength = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 constitution = ability[2]
@@ -109,7 +109,7 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 strength = ability[2]
@@ -120,7 +120,7 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -131,7 +131,7 @@ module.exports.run = async(client, msg, args) => {
                                                 wisdom = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 strength = ability[0]
                                                 intellect = ability[1]
                                                 constitution = ability[2]
@@ -142,7 +142,7 @@ module.exports.run = async(client, msg, args) => {
                                                 charisma = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -153,7 +153,7 @@ module.exports.run = async(client, msg, args) => {
                                                 wisdom = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 strength = ability[0]
                                                 intellect = ability[1]
                                                 charisma = ability[2]
@@ -164,7 +164,7 @@ module.exports.run = async(client, msg, args) => {
                                                 charisma = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 strength = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -175,7 +175,7 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -186,7 +186,7 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
-                                                ability = shuffle(ability)
+                                                shuffle(ability)
                                                 dexterity = ability[0]
                                                 intellect = ability[1]
                                                 wisdom = ability[2]
@@ -197,13 +197,11 @@ module.exports.run = async(client, msg, args) => {
                                                 constitution = ability[1]
 
                                                 ability.splice(0,2)
-                                                msg.channel.send(ability)
                                                 shuffle(ability)
-                                                msg.channel.send(ability)
                                                 dexterity = ability[0]
-                                                intellect = ability[1]
+                                                strength = ability[1]
                                                 wisdom = ability[2]
-                                                constitution = ability[3]
+                                                charisma = ability[3]
                                             }
                                             else {
                                                 msg.channel.send(`I don't have your class in my system. Either way, I'll just randomly put it then!`)
@@ -309,12 +307,12 @@ module.exports.run = async(client, msg, args) => {
                                                     race: raceInput,
                                                     alignment: alignmentInput,
                                                     ability: {
-                                                        strength: ability[0] + extraS,
-                                                        dexterity: ability[1] + extraD,
-                                                        constitution: ability[2] + extraC,
-                                                        intellect: ability[3] + extraI,
-                                                        wisdom: ability[4] + extraW,
-                                                        charisma: ability[5] + extraCh
+                                                        strength: strength + extraS,
+                                                        dexterity: dexterity + extraD,
+                                                        constitution: constitution + extraC,
+                                                        intellect: intellect + extraI,
+                                                        wisdom: wisdom + extraW,
+                                                        charisma: charisma + extraCh
                                                     }
                                                 });
                                                 msg.channel.send(`Character saved!`)

@@ -8,13 +8,21 @@ module.exports.run = async(client, msg, args) => {
     msg.channel.send(`Are you sure you want to delete? (Answer yes or no.)`)
     msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
         if (collected.first().content.toLowerCase() == 'yes') {
-            deleteData = await profileModel.deleteOne({userID: hooman})
-            if (!deleteData) {
-                msg.channel.send(`Sorry ${msg.author}, you don't have a character!`)
-            }
-            else {
-                deleteMoney = await moneyModel.deleteOne({userID: hooman})
-                msg.channel.send(`Character deleted!`)
+            try {
+                deleteData = await profileModel.deleteOne({userID: hooman})
+                if (!deleteData) {
+                    msg.channel.send(`Sorry ${msg.author}, you don't have a character!`)
+                }
+                else {
+                    try {
+                        deleteMoney = await moneyModel.deleteOne({userID: hooman})
+                        msg.channel.send(`Character deleted!`)
+                    } catch (err) {
+                        console.log(err)
+                    }
+                }
+            } catch (err) {
+                console.log(err)
             }
         }
         else {

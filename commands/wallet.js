@@ -142,7 +142,7 @@ module.exports.run = async(client, msg, args) => {
                     gold: money
                 }
             });
-            msg.channel.send(`What class are you? Oh! A ${profileData.class}? How fascinating. Oh! Here you go, your wallet is all set up. You can check it using **ny mymoney**. Have a nice day!`)
+            msg.channel.send(`What class are you? Oh! A ${profileData.class}? How fascinating. Oh! Here you go, your wallet is all set up. You can check it using **ny wallet**. Have a nice day!`)
         } catch (err) {
             console.log(err)
         }

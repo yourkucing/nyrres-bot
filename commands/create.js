@@ -55,6 +55,7 @@ module.exports.run = async(client, msg, args) => {
                                                 ability.push(total)
                                                 times = times + 1
                                             }
+                                            ability = ability.sort(function(a, b){return b-a});
                                             msg.channel.send(`**Your ability points:**\nStrength: ${ability[0]}\nDexterity: ${ability[1]}\nConstitution: ${ability[2]}\nIntellect: ${ability[3]}\nWisdom: ${ability[4]}\nCharisma: ${ability[5]}`);
                                             
                                             extraS = 0

@@ -55,8 +55,158 @@ module.exports.run = async(client, msg, args) => {
                                                 ability.push(total)
                                                 times = times + 1
                                             }
-                                            ability = ability.sort(function(a, b){return b-a});
-                                            msg.channel.send(`**Your ability points:**\nStrength: ${ability[0]}\nDexterity: ${ability[1]}\nConstitution: ${ability[2]}\nIntellect: ${ability[3]}\nWisdom: ${ability[4]}\nCharisma: ${ability[5]}`);
+
+                                            strength = ability[0]
+                                            dexterity = ability[1]
+                                            constitution = ability[2]
+                                            wisdom = ability[3]
+                                            intellect = ability[4]
+                                            charisma = ability[5]
+
+                                            ability = ability.sort(function(a, b){return b-a})
+                                            function shuffle(array) {
+                                                for (let i = array.length - 1; i > 0; i--) {
+                                                  let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+                                                  [array[i], array[j]] = [array[j], array[i]];
+                                                }
+                                              }
+
+                                            if (classInput.toLowerCase() == 'barbarian') {
+                                                strength = ability[0]
+                                                constitution = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                charisma = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'bard') {
+                                                charisma = ability[0]
+                                                dexterity = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                strength = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                constitution = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'cleric') {
+                                                wisdom = ability[0]
+                                                strength = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                constitution = ability[2]
+                                                charisma = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'druid') {
+                                                wisdom = ability[0]
+                                                constitution = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                strength = ability[2]
+                                                charisma = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'fighter') {
+                                                strength = ability[0]
+                                                constitution = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                charisma = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'monk') {
+                                                dexterity = ability[0]
+                                                wisdom = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                strength = ability[0]
+                                                intellect = ability[1]
+                                                constitution = ability[2]
+                                                charisma = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'paladin') {
+                                                strength = ability[0]
+                                                charisma = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                constitution = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'ranger') {
+                                                dexterity = ability[0]
+                                                wisdom = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                strength = ability[0]
+                                                intellect = ability[1]
+                                                charisma = ability[2]
+                                                constitution = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'rogue') {
+                                                dexterity = ability[0]
+                                                charisma = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                strength = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                constitution = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'sorcerer') {
+                                                charisma = ability[0]
+                                                constitution = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                strength = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'warlock') {
+                                                charisma = ability[0]
+                                                constitution = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                strength = ability[3]
+                                            }
+                                            else if (classInput.toLowerCase() == 'wizard') {
+                                                intellect = ability[0]
+                                                constitution = ability[1]
+
+                                                ability.splice(0,2)
+                                                ability = shuffle(ability)
+                                                dexterity = ability[0]
+                                                intellect = ability[1]
+                                                wisdom = ability[2]
+                                                constitution = ability[3]
+                                            }
+                                            else {
+                                                msg.channel.send(`I don't have your class in my system. Either way, I'll just randomly put it then!`)
+                                            }
+                                            msg.channel.send(`**Your ability points:**\nStrength: ${strength}\nDexterity: ${dexterity}\nConstitution: ${constitution}\nIntellect: ${intellect}\nWisdom: ${wisdom}\nCharisma: ${charisma}`);
                                             
                                             extraS = 0
                                             extraD = 0

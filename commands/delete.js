@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
-    u = ""
+    u = "no"
     msg.channel.send(`Are you sure you want to delete? (Answer yes or no. If not answered within 30 seconds, I will ignore it.)`)
     msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1, time: 30000}).then(collected => {
         if (collected.first().content.toLowerCase() == 'yes') {
@@ -17,6 +17,7 @@ module.exports.run = async(client, msg, args) => {
         msg.channel.send('Oh, I guess it was an accident then. No deletion occurred, have a nice day!');
     });
 
+    msg.channel.send(u)
     if (u == "yes") {
         deleteData = await profileModel.deleteOne({userID: hooman})
         if (!deleteData) {

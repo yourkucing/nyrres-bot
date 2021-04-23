@@ -138,8 +138,7 @@ module.exports.run = async(client, msg, args) => {
                     If the creature succeeds on its saving throw, you can’t use this feature on that creature again for 24 hours.
                     
                     **Retaliation**
-                    Starting at 14th level, when you take damage from a creature that is within 5 feet of you, you can use your reaction to make a melee weapon attack against that creature.`}
-                    )
+                    Starting at 14th level, when you take damage from a creature that is within 5 feet of you, you can use your reaction to make a melee weapon attack against that creature.`})
                 embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                 msg.edit(embed)
                 msg.reactions.resolve('⏩').users.remove(msg.author.id);

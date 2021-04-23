@@ -59,7 +59,7 @@ module.exports.run = async(client, msg, args) => {
             forwards.on('collect', r => {
                 if (page === 2) return;
                 page++;
-                embed.addFields(
+                embed.fields(
                     { name: `Extra Attack`, value: `Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.`},
                     )
                 embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);

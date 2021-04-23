@@ -402,7 +402,7 @@ module.exports.run = async(client, msg, args) => {
                                                                 charisma: charisma + extraCh
                                                             }
                                                         });
-                                                        let hitpoint = HitpointModel.create({
+                                                        let hitpoint = hitpointModel.create({
                                                             userID: hooman,
                                                             serverID: guild,
                                                             characterName: nameInput,

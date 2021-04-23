@@ -15,49 +15,49 @@ module.exports.run = async(client, msg, args) => {
     else {
 
         cond = [];
-        if (profileData.conditions.blinded == "yes") {
+        if (hitpointData.conditions.blinded == "yes") {
             cond.push("Blinded")
         }
-        if (profileData.conditions.charmed == "yes") {
+        if (hitpointData.conditions.charmed == "yes") {
             cond.push("Charmed")
         }
-        if (profileData.conditions.deafened == "yes") {
+        if (hitpointData.conditions.deafened == "yes") {
             cond.push("Deafened")
         }
-        if (profileData.conditions.frightened == "yes") {
+        if (hitpointData.conditions.frightened == "yes") {
             cond.push("Frightened")
         }
-        if (profileData.conditions.grappled == "yes") {
+        if (hitpointData.conditions.grappled == "yes") {
             cond.push("Grappled")
         }
-        if (profileData.conditions.incapacitated == "yes") {
+        if (hitpointData.conditions.incapacitated == "yes") {
             cond.push("Incapacitated")
         }
-        if (profileData.conditions.invisible == "yes") {
+        if (hitpointData.conditions.invisible == "yes") {
             cond.push("Invisible")
         }
-        if (profileData.conditions.paralyzed == "yes") {
+        if (hitpointData.conditions.paralyzed == "yes") {
             cond.push("Paralyzed")
         }
-        if (profileData.conditions.petrified == "yes") {
+        if (hitpointData.conditions.petrified == "yes") {
             cond.push("Petrified")
         }
-        if (profileData.conditions.poisoned == "yes") {
+        if (hitpointData.conditions.poisoned == "yes") {
             cond.push("Poisoned")
         }
-        if (profileData.conditions.prone == "yes") {
+        if (hitpointData.conditions.prone == "yes") {
             cond.push("Prone")
         }
-        if (profileData.conditions.restrained == "yes") {
+        if (hitpointData.conditions.restrained == "yes") {
             cond.push("Restrained")
         }
-        if (profileData.conditions.stunned == "yes") {
+        if (hitpointData.conditions.stunned == "yes") {
             cond.push("Stunned")
         }
-        if (profileData.conditions.unconscious == "yes") {
+        if (hitpointData.conditions.unconscious == "yes") {
             cond.push("Unconscious")
         }
-        if (profileData.conditions.exhaustion == "yes") {
+        if (hitpointData.conditions.exhaustion == "yes") {
             cond.push("Exhaustion")
         }
 

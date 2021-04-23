@@ -151,7 +151,7 @@ module.exports.run = async(client, msg, args) => {
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
-		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Money`)
+		.setTitle(`**${moneyData.characterName}'s** Wallet`)
 		.setDescription('You can see your money here.')
 		.addFields(
 		{ name: `Name: ${moneyData.characterName}`, value: `Copper: ${moneyData.money.copper} cp\nSilver: ${moneyData.money.silver} sp\nElectrum: ${moneyData.money.electrum} ep\nGold: ${moneyData.money.gold} gp\nPlatinum: ${moneyData.money.platinum} pp`}

@@ -55,21 +55,11 @@ module.exports.run = async(client, msg, args) => {
 
             const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
             const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
-            
-            forwards.on('collect', r => {
-                if (page === 2) return;
-                page++;
-                embed.fields(
-                    { name: `Extra Attack`, value: `Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.`},
-                    )
-                embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
-                msg.edit(embed)
-            })
-            
+
             backwards.on('collect', r => {
                 if (page === 1) return;
                 page--;
-                embed.addFields(
+                embed.fields(
                     { name: 'Creating a Barbarian', value: `When creating a barbarian character, think about where your character comes from and his or her place in the world. Did you come from a distant land, making you a stranger in the area of the campaign? Or is the campaign set in a rough-and-tumble frontier where barbarians are common?
                     \nWhat led you to take up the adventuring life? Were you lured to settled lands by the promise of riches? Did you join forces with soldiers of those lands to face a shared threat? Did monsters or an invading horde drive you out of your homeland, making you a rootless refugee? Perhaps you were a prisoner of war, brought in chains to “civilized” lands and only now able to win your freedom. Or you might have been cast out from your people because of a crime you committed, a taboo you violated, or a coup that removed you from a position of authority.`},
                     { name: `Hit Points`, value: `**Hit Dice:** 1d12 per barbarian level
@@ -106,6 +96,48 @@ module.exports.run = async(client, msg, args) => {
                     embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                     msg.edit(embed)
             })
+            
+            forwards.on('collect', r => {
+                if (page === 2) return;
+                page++;
+                embed.fields(
+                    { name: `Extra Attack`, value: `Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.`},
+                    { name: `Fast Movement`, value: `Starting at 5th level, your speed increases by 10 feet while you aren’t wearing heavy armor.`},
+                    { name: `Feral Instinct`, value: `By 7th level, your instincts are so honed that you have advantage on initiative rolls.
+
+                    Additionally, if you are surprised at the beginning of combat and aren’t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.`},
+                    { name: `Brutal Critical`, value: `Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.
+
+                    This increases to two additional dice at 13th level and three additional dice at 17th level.`},
+                    { name: `Relentless Rage`, value: `Starting at 11th level, your rage can keep you fighting despite grievous wounds. If you drop to 0 hit points while you’re raging and don’t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead.
+
+                    Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.`},
+                    { name: `Brutal Critical`, value: `At 13th level, you can roll two additional weapon damage dice when determining the extra damage for a critical hit with a melee attack.
+
+                    This increases to three additional dice at 17th level.`},
+                    { name: `Persistent Rage`, value: `Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.`},
+                    { name: `Brutal Critical`, value: `At 17th level, you can roll three additional weapon damage dice when determining the extra damage for a critical hit with a melee attack.`},
+                    { name: `Indomitable Might`, value: `Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.`},
+                    { name: `Primal Champion`, value: `At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.`},
+                    { name: `Path of the Berserker`, value: `For some barbarians, rage is a means to an end—that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker’s rage, you thrill in the chaos of battle, heedless of your own health or well-being.
+
+                    **Frenzy**
+                    Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion.
+                    
+                    **Mindless Rage**
+                    Beginning at 6th level, you can’t be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage.
+                    
+                    **Intimidating Presence**
+                    Beginning at 10th level, you can use your action to frighten someone with your menacing presence. When you do so, choose one creature that you can see within 30 feet of you. If the creature can see or hear you, it must succeed on a Wisdom saving throw (DC equal to 8 + your proficiency bonus + your Charisma modifier) or be frightened of you until the end of your next turn. On subsequent turns, you can use your action to extend the duration of this effect on the frightened creature until the end of your next turn. This effect ends if the creature ends its turn out of line of sight or more than 60 feet away from you.
+                    If the creature succeeds on its saving throw, you can’t use this feature on that creature again for 24 hours.
+                    
+                    **Retaliation**
+                    Starting at 14th level, when you take damage from a creature that is within 5 feet of you, you can use your reaction to make a melee weapon attack against that creature.`}
+                    )
+                embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
+                msg.edit(embed)
+            })
+            
         })
     })
 }

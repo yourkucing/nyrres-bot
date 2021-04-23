@@ -8,67 +8,40 @@ module.exports.run = async(client, msg, args) => {
         msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
     }
     else {
-        cond = [];
-        if (profileData.conditions.blinded == "yes") {
-            cond.push("Blinded")
+        if (profileData.notes == null) {
+            notes = 'No notes'
         }
-        if (profileData.conditions.charmed == "yes") {
-            cond.push("Charmed")
+        else {
+            notes = profileData.notes
         }
-        if (profileData.conditions.deafened == "yes") {
-            cond.push("Deafened")
+        if (profileData.hitdie == null || profileData.savingthrows == null) {
+            url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
+            const embed = new Discord.MessageEmbed()
+            .setColor('#FF69B4')
+            .setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)
+            .setDescription('You can see your character profile here.')
+            .addFields(
+            { name: 'Profile', value: `Character Name: ${profileData.characterName}\nGender: ${profileData.gender}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}\nProficiency Bonus: +${profileData.proficiency}`},
+            { name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
+            { name: 'Notes', value: `${notes}`}
+            )
+            .setThumbnail(`${url}`);
+            msg.channel.send(embed);
         }
-        if (profileData.conditions.frightened == "yes") {
-            cond.push("Frightened")
-        }
-        if (profileData.conditions.grappled == "yes") {
-            cond.push("Grappled")
-        }
-        if (profileData.conditions.incapacitated == "yes") {
-            cond.push("Incapacitated")
-        }
-        if (profileData.conditions.invisible == "yes") {
-            cond.push("Invisible")
-        }
-        if (profileData.conditions.paralyzed == "yes") {
-            cond.push("Paralyzed")
-        }
-        if (profileData.conditions.petrified == "yes") {
-            cond.push("Petrified")
-        }
-        if (profileData.conditions.poisoned == "yes") {
-            cond.push("Poisoned")
-        }
-        if (profileData.conditions.prone == "yes") {
-            cond.push("Prone")
-        }
-        if (profileData.conditions.restrained == "yes") {
-            cond.push("Restrained")
-        }
-        if (profileData.conditions.stunned == "yes") {
-            cond.push("Stunned")
-        }
-        if (profileData.conditions.unconscious == "yes") {
-            cond.push("Unconscious")
-        }
-        if (profileData.conditions.exhaustion == "yes") {
-            cond.push("Exhaustion")
+        else {
+            url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
+            const embed = new Discord.MessageEmbed()
+            .setColor('#FF69B4')
+            .setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)
+            .setDescription('You can see your character profile here.')
+            .addFields(
+            { name: 'Profile', value: `Character Name: ${profileData.characterName}\nGender: ${profileData.gender}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}\nProficiency Bonus: +${profileData.proficiency}\nSaving Throw: ${profileData.savingthrows}\nHit Die: ${profileData.hitdie}`},
+            { name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
+            { name: 'Notes', value: `${notes}`}
+            )
+            .setThumbnail(`${url}`);
+            msg.channel.send(embed);
         }
 
-        if (cond.length < 1) {
-            cond.push("You have no conditions currently.")
-        }
-        url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
-        const embed = new Discord.MessageEmbed()
-		.setColor('#FF69B4')
-		.setTitle(`**${msg.guild.members.cache.get(hooman).displayName}'s** Character Profile`)
-		.setDescription('You can see your character profile here.')
-		.addFields(
-		{ name: 'Profile', value: `Character Name: ${profileData.characterName}\nGender: ${profileData.gender}\nClass: ${profileData.class}\nRace: ${profileData.race}\nLevel: ${profileData.level}\nAlignment: ${profileData.alignment}\nProficiency Bonus: +${profileData.proficiency}`},
-		{ name: 'Ability', value: `Strength: ${profileData.ability.strength}\nDexterity: ${profileData.ability.dexterity}\nConstitution: ${profileData.ability.constitution}\nIntellect: ${profileData.ability.intellect}\nWisdom: ${profileData.ability.wisdom}\nCharisma: ${profileData.ability.charisma}`},
-		{ name: 'Conditions', value: `${cond}` }
-		)
-        .setThumbnail(`${url}`);
-		msg.channel.send(embed);
     }
 }

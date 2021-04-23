@@ -7,8 +7,11 @@ const profileSchema = new mongoose.Schema({
     gender: { type: String, default: 'Nonbinary'},
     class: { type: String, default: null},
     race: { type: String, default: null},
+    subrace: { type: String, default: null},
     level: { type: Number, default: 1},
     alignment: { type: String, default: null},
+    savingthrows: { type: String, default: null},
+    hitdie: { type: String, default: null},
     proficiency: { type: Number, default: 2},
     ability: {
         strength: { type: Number, default: 0},
@@ -18,23 +21,7 @@ const profileSchema = new mongoose.Schema({
         wisdom: {type: Number, default: 0},
         charisma: {type: Number, default: 0}
     },
-    conditions: {
-        blinded: { type: String, default: 'no'},
-        charmed: { type: String, default: 'no'},
-        deafened: { type: String, default: 'no'},
-        frightened: { type: String, default: 'no'},
-        grappled: { type: String, default: 'no'},
-        incapacitated: { type: String, default: 'no'},
-        invisible: { type: String, default: 'no'},
-        paralyzed: { type: String, default: 'no'},
-        petrified: { type: String, default: 'no'},
-        poisoned: { type: String, default: 'no'},
-        prone: { type: String, default: 'no'},
-        restrained: { type: String, default: 'no'},
-        stunned: { type: String, default: 'no'},
-        unconscious: { type: String, default: 'no'},
-        exhaustion: { type: String, default: 'no'},
-    }
+    notes: { type: String, default: null }
 })
 
 const model = mongoose.model('ProfileModels', profileSchema);

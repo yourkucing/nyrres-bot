@@ -20,9 +20,9 @@ module.exports.run = async(client, msg, args) => {
     { name: `Stonecunning`, value: `Whenever you make an Intellect check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.`},
     { name: `Languages`, value: `You can speak, read, and write Common and Dwarvish. Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak.`},
     { name: `Subrace: Hill Dwarf`, value: `As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience. The gold dwarves of Faerûn in their mighty southern kingdom are hill dwarves, as are the exiled Neidar and the debased Klar of Krynn in the Dragonlance setting.
-    \n\nAbility Score Increase: Your Wisdom score increases by 1.\n\nDwarven Toughness: Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.`},
+    \nAbility Score Increase: Your Wisdom score increases by 1.\n\nDwarven Toughness: Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.`},
     { name: `Subrace: Mountain Dwarf`, value: `As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain. You’re probably on the tall side (for a dwarf), and tend toward lighter coloration. The shield dwarves of northern Faerûn, as well as the ruling Hylar clan and the noble Daewar clan of Dragonlance, are mountain dwarves.
-    \n\nAbility Score Increase: Your Strength score increases by 2.\n\nDwarven Armor Training: You have proficiency with light and medium armor.`}
+    \nAbility Score Increase: Your Strength score increases by 2.\n\nDwarven Armor Training: You have proficiency with light and medium armor.`}
     )
     .setThumbnail(`https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/254/420/618/636271781394265550.png`)
     .setFooter('More information: https://www.dndbeyond.com/races/dwarf');

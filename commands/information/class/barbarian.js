@@ -59,7 +59,8 @@ module.exports.run = async(client, msg, args) => {
             backwards.on('collect', r => {
                 if (page === 1) return;
                 page--;
-                embed.fields(
+                embed.fields = []
+                embed.addFields(
                     { name: 'Creating a Barbarian', value: `When creating a barbarian character, think about where your character comes from and his or her place in the world. Did you come from a distant land, making you a stranger in the area of the campaign? Or is the campaign set in a rough-and-tumble frontier where barbarians are common?
                     \nWhat led you to take up the adventuring life? Were you lured to settled lands by the promise of riches? Did you join forces with soldiers of those lands to face a shared threat? Did monsters or an invading horde drive you out of your homeland, making you a rootless refugee? Perhaps you were a prisoner of war, brought in chains to “civilized” lands and only now able to win your freedom. Or you might have been cast out from your people because of a crime you committed, a taboo you violated, or a coup that removed you from a position of authority.`},
                     { name: `Hit Points`, value: `**Hit Dice:** 1d12 per barbarian level
@@ -101,7 +102,8 @@ module.exports.run = async(client, msg, args) => {
             forwards.on('collect', r => {
                 if (page === 2) return;
                 page++;
-                embed.fields(
+                embed.fields = []
+                embed.addFields(
                     { name: `Extra Attack`, value: `Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.`},
                     { name: `Fast Movement`, value: `Starting at 5th level, your speed increases by 10 feet while you aren’t wearing heavy armor.`},
                     { name: `Feral Instinct`, value: `By 7th level, your instincts are so honed that you have advantage on initiative rolls.

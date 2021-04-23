@@ -23,16 +23,16 @@ module.exports.run = async(client, msg, args) => {
     2. a) two handaxes or (b) any simple weapon
     3. An explorer’s pack and four javelins`},
     { name: `Rage`, value: `In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
-    \nWhile raging, you gain the following benefits if you aren’t wearing heavy armor:
+    \nWhile raging, you gain these benefits if you aren’t wearing heavy armor:
     
-    You have advantage on Strength checks and Strength saving throws.
+    You have advantage on Strength checks & Strength saving throws.
     When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table.
-    You have resistance to bludgeoning, piercing, and slashing damage.
+    You have resistance to bludgeoning, piercing, & slashing damage.
     If you are able to cast spells, you can’t cast them or concentrate on them while raging.
     
-    Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven’t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
+    Your rage lasts for 1 min. It ends early if you are knocked unconscious or if your turn ends and you haven’t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
     
-    Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.`},
+    Once you have raged the number of times shown for your barbarian level, you must finish a long rest before you can rage again.`},
     { name: `Unarmored Defense`, value: `While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.`},
     { name: `Reckless Attack`, value: `Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.`},
     { name: `Danger Sense`, value: `At 2nd level, you gain an uncanny sense of when things nearby aren’t as they should be, giving you an edge when you dodge away from danger.
@@ -116,16 +116,16 @@ module.exports.run = async(client, msg, args) => {
                     2. a) two handaxes or (b) any simple weapon
                     3. An explorer’s pack and four javelins`},
                     { name: `Rage`, value: `In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
-                    \nWhile raging, you gain the following benefits if you aren’t wearing heavy armor:
+                    \nWhile raging, you gain these benefits if you aren’t wearing heavy armor:
                     
-                    You have advantage on Strength checks and Strength saving throws.
+                    You have advantage on Strength checks & Strength saving throws.
                     When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table.
-                    You have resistance to bludgeoning, piercing, and slashing damage.
+                    You have resistance to bludgeoning, piercing, & slashing damage.
                     If you are able to cast spells, you can’t cast them or concentrate on them while raging.
                     
-                    Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven’t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
+                    Your rage lasts for 1 min. It ends early if you are knocked unconscious or if your turn ends and you haven’t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
                     
-                    Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.`},
+                    Once you have raged the number of times shown for your barbarian level, you must finish a long rest before you can rage again.`},
                     { name: `Unarmored Defense`, value: `While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.`},
                     { name: `Reckless Attack`, value: `Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.`},
                     { name: `Danger Sense`, value: `At 2nd level, you gain an uncanny sense of when things nearby aren’t as they should be, giving you an edge when you dodge away from danger.

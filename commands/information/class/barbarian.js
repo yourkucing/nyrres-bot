@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
 
+    let page = 1;
     const embed = new Discord.MessageEmbed()
     .setColor('#FF69B4')
     .setTitle(`Barbarian`)

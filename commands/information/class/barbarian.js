@@ -95,6 +95,7 @@ module.exports.run = async(client, msg, args) => {
                     )
                     embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                     msg.edit(embed)
+                    msg.reactions.resolve('⏪').users.remove(msg.author.id);
             })
             
             forwards.on('collect', r => {
@@ -136,6 +137,7 @@ module.exports.run = async(client, msg, args) => {
                     )
                 embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                 msg.edit(embed)
+                msg.reactions.resolve('⏩').users.remove(msg.author.id);
             })
             
         })

@@ -50,13 +50,17 @@ module.exports.run = async(client, msg, args) => {
         msg.react('⏪').then( r => {
             msg.react('⏩')
 
-            const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === msg.author.id;
-            const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === msg.author.id;
+            const backwardsFilter = (reaction, user) => {
+                return reaction.emoji.name === '⏪' && !user.bot;
+            };
+            const forwardsFilter = (reaction, user) => {
+                return reaction.emoji.name === '⏩' && !user.bot;
+            };
 
             const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
             const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
 
-            backwards.on('collect', r => {
+            backwards.on('collect', (reaction, user) => {
                 if (page === 1) return;
                 page--;
                 embed.fields = []
@@ -99,7 +103,7 @@ module.exports.run = async(client, msg, args) => {
                     msg.reactions.resolve('⏪').users.remove(msg.author.id);
             })
             
-            forwards.on('collect', r => {
+            forwards.on('collect', (reaction, user) => {
                 if (page === 2) return;
                 page++;
                 embed.fields = []

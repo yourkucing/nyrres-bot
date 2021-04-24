@@ -5,6 +5,7 @@ const Discord = require('discord.js');
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
     let guild = msg.guild.id
+    msg.channel.send(args)
     stuffs = args.split(',')
     stuffs[0] = stuffs[0].trim()
     stuffs[1] = stuffs[1].trim()

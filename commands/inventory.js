@@ -25,8 +25,9 @@ module.exports.run = async(client, msg, args) => {
         else {
             for (x in weapon) {
                 weaponlist += x.item + '\n'
+                console.log(x.item)
+                console.log(weaponlist)
             }
-            console.log(weaponlist)
         }
         if (!equipment) {
             equipmentlist = 'No equipments.'

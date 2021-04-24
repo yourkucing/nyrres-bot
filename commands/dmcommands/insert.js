@@ -7,6 +7,8 @@ module.exports.run = async(client, msg, args) => {
     let guild = msg.guild.id
     const words = args.join(' ')
     stuffs = words.split(',')
+    stuffs[0] = stuffs[0].trim()
+    stuffs[1] = stuffs[1].trim()
 
     profileData = await profileModel.findOne({userID: hooman})
     let inventory;

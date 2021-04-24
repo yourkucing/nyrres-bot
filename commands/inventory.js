@@ -5,6 +5,7 @@ const Discord = require('discord.js');
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
     profileData = await profileModel.findOne({userID: hooman})
+    inventoryData = await inventoryModel.find({userID: hooman})
     if (!profileData) {
         msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
     }
@@ -27,6 +28,7 @@ module.exports.run = async(client, msg, args) => {
             pet = 'No pets.'
         }
         console.log(weapon)
+        console.log(inventoryData)
 
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()

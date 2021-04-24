@@ -59,9 +59,9 @@ module.exports.run = async(client, msg, args) => {
             }
             //3600000
 
-            const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
-            const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
-            const stop = msg.createReactionCollector(stopFilter, { time: 60000 });
+            const backwards = msg.createReactionCollector(backwardsFilter, { time: 3600000 });
+            const forwards = msg.createReactionCollector(forwardsFilter, { time: 3600000 });
+            const stop = msg.createReactionCollector(stopFilter, { time: 3600000 });
 
             backwards.on('collect', (reaction, user) => {
                 if (page === 1) return;

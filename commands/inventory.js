@@ -9,10 +9,10 @@ module.exports.run = async(client, msg, args) => {
         msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
     }
     else {
-        weapon = await inventoryModel.find({userID: hooman}, {category: 'weapon'})
-        equipment = await inventoryModel.find({userID: hooman}, {category: 'equipment'})
-        mount = await inventoryModel.find({userID: hooman}, {category: 'mount'})
-        pet = await inventoryModel.find({userID: hooman}, {category: 'pet'})
+        weapon = await inventoryModel.find({userID: hooman, category: 'weapon'})
+        equipment = await inventoryModel.find({userID: hooman, category: 'equipment'})
+        mount = await inventoryModel.find({userID: hooman, category: 'mount'})
+        pet = await inventoryModel.find({userID: hooman, category: 'pet'})
 
         if (!weapon) {
             weapon = 'No weapons.'

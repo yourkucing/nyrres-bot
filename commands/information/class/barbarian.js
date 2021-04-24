@@ -20,9 +20,8 @@ module.exports.run = async(client, msg, args) => {
     **Skills:** Choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival`}
     )
     .setThumbnail(`https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/342/420/618/636272680339895080.png`)
-    .setImage(`https://i.ibb.co/fr87VK7/Screenshot-2021-04-23-at-9-49-47-PM.png`)
-    .setImage(`https://i.ibb.co/sy2frvH/Screenshot-2021-04-23-at-9-50-55-PM.png`)
-    .setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
+    .setImage(`https://i.ibb.co/q926NSd/Screenshot-2021-04-24-at-10-57-12-PM.png`)
+    .setFooter(`Page ${page} of 5. More information: https://www.dndbeyond.com/classes/barbarian`);
     msg.channel.send(embed).then(msg => {
 
         msg.react('⏪').then( r => {

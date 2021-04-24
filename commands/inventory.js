@@ -59,7 +59,7 @@ module.exports.run = async(client, msg, args) => {
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
 		.setTitle(`**${profileData.characterName}'s** Inventory`)
-		.setDescription('You can see your money here.')
+		.setDescription('You can see your inventory here.')
 		.addFields(
 		{ name: `Weapons`, value: `${weaponlist}`, inline: true},
         { name: `Equipments`, value: `${equipmentlist}`, inline: true},

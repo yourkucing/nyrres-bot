@@ -144,7 +144,9 @@ module.exports.run = async(client, msg, args) => {
             })
 
             stop.on('collect', (reaction, user) => {
-                collector.stop()
+                backwards.stop()
+                forwards.stop()
+                stop.stop()
                 // msg.reactions.removeAll()
             })
             

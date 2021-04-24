@@ -26,6 +26,7 @@ module.exports.run = async(client, msg, args) => {
             for (x in weapon) {
                 weaponlist += x.item + '\n'
             }
+            console.log(weaponlist)
         }
         if (!equipment) {
             equipmentlist = 'No equipments.'
@@ -34,6 +35,7 @@ module.exports.run = async(client, msg, args) => {
             for (x in equipment) {
                 equipmentlist += x.item + '\n'
             }
+            console.log(equipmentlist)
         }
         if (!mount) {
             mountlist = 'No mounts.'
@@ -42,6 +44,7 @@ module.exports.run = async(client, msg, args) => {
             for (x in mount) {
                 mountlist += x.item + '\n'
             }
+            console.log(mountlist)
         }
         if (!pet) {
             petlist = 'No pets.'
@@ -50,8 +53,8 @@ module.exports.run = async(client, msg, args) => {
             for (x in pet) {
                 petlist += x.item + '\n'
             }
+            console.log(petlist)
         }
-        console.log(weapon)
 
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()

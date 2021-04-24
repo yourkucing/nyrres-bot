@@ -104,7 +104,7 @@ module.exports.run = async(client, msg, args) => {
             })
 
             backwards.on('end', collected => {
-                cache.get('⏪').remove()
+                msg.reactions.cache.get('⏪').remove()
             })
             
             forwards.on('collect', (reaction, user) => {
@@ -149,7 +149,7 @@ module.exports.run = async(client, msg, args) => {
             })
 
             forwards.on('end', collected => {
-                cache.get('⏩').remove()
+                msg.reactions.cache.get('⏩').remove()
             })
 
             stop.on('collect', (reaction, user) => {
@@ -160,7 +160,7 @@ module.exports.run = async(client, msg, args) => {
             })
 
             stop.on('end', collected => {
-                cache.get('🚫').remove()
+                msg.reactions.cache.get('🚫').remove()
             })
             
         })

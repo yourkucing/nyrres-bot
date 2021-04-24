@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
-
+    hooman = msg.author
     let page = 1;
     const embed = new Discord.MessageEmbed()
     .setColor('#FF69B4')
@@ -94,7 +94,7 @@ module.exports.run = async(client, msg, args) => {
                     )
                     embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                     msg.edit(embed)
-                    msg.reactions.resolve('⏪').users.remove(msg.author.id);
+                    msg.reactions.resolve('⏪').users.remove(hooman.id);
             })
             
             forwards.on('collect', (reaction, user) => {
@@ -135,7 +135,7 @@ module.exports.run = async(client, msg, args) => {
                     Starting at 14th level, when you take damage from a creature that is within 5 ft of you, you can use your reaction to make a melee weapon attack against that creature.`})
                 embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                 msg.edit(embed)
-                msg.reactions.resolve('⏩').users.remove(msg.author.id);
+                msg.reactions.resolve('⏩').users.remove(hooman.id);
             })
             
         })

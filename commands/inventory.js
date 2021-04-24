@@ -19,7 +19,7 @@ module.exports.run = async(client, msg, args) => {
         mountlist = ''
         petlist = ''
 
-        if (!weapon) {
+        if (weapon.length == 0) {
             weaponlist = 'No weapons.'
         }
         else {
@@ -27,7 +27,7 @@ module.exports.run = async(client, msg, args) => {
                 weaponlist += weapon[x].item + '\n'
             }
         }
-        if (!equipment) {
+        if (equipment.length == 0) {
             equipmentlist = 'No equipments.'
             console.log('ok')
         }
@@ -36,7 +36,7 @@ module.exports.run = async(client, msg, args) => {
                 equipmentlist += equipment[x].item + '\n'
             }
         }
-        if (!mount) {
+        if (mount.length == 0) {
             mountlist = 'No mounts.'
             console.log('ok')
         }
@@ -45,7 +45,7 @@ module.exports.run = async(client, msg, args) => {
                 mountlist += mount[x].item + '\n'
             }
         }
-        if (!pet) {
+        if (pet.length == 0) {
             petlist = 'No pets.'
             console.log('ok')
         }

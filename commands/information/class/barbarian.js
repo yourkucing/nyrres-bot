@@ -57,10 +57,11 @@ module.exports.run = async(client, msg, args) => {
             const stopFilter = (reaction, user) => {
                 return reaction.emoji.name === '🚫' && !user.bot;
             }
+            //3600000
 
-            const backwards = msg.createReactionCollector(backwardsFilter);
-            const forwards = msg.createReactionCollector(forwardsFilter);
-            const stop = msg.createReactionCollector(stopFilter);
+            const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
+            const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
+            const stop = msg.createReactionCollector(stopFilter, { time: 60000 });
 
             backwards.on('collect', (reaction, user) => {
                 if (page === 1) return;
@@ -100,6 +101,10 @@ module.exports.run = async(client, msg, args) => {
                     embed.setFooter(`Page ${page} of 2. More information: https://www.dndbeyond.com/classes/barbarian`);
                     msg.edit(embed)
                     msg.reactions.resolve('⏪').users.remove(hooman.id);
+            })
+
+            backwards.on('end', collected => {
+                cache.get('⏪').remove()
             })
             
             forwards.on('collect', (reaction, user) => {
@@ -143,11 +148,19 @@ module.exports.run = async(client, msg, args) => {
                 msg.reactions.resolve('⏩').users.remove(hooman.id);
             })
 
+            forwards.on('end', collected => {
+                cache.get('⏩').remove()
+            })
+
             stop.on('collect', (reaction, user) => {
                 backwards.stop()
                 forwards.stop()
                 stop.stop()
-                // msg.reactions.removeAll()
+                msg.reactions.removeAll()
+            })
+
+            stop.on('end', collected => {
+                cache.get('🚫').remove()
             })
             
         })

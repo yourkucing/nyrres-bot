@@ -24,9 +24,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in weapon) {
-                weaponlist += x.item + '\n'
-                console.log(x)
-                console.log(weaponlist)
+                weaponlist += weapon[x].item + '\n'
             }
         }
         if (!equipment) {
@@ -35,9 +33,8 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in equipment) {
-                equipmentlist += x.item + '\n'
+                equipmentlist += equipment[x].item + '\n'
             }
-            console.log(equipmentlist)
         }
         if (!mount) {
             mountlist = 'No mounts.'
@@ -45,9 +42,8 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in mount) {
-                mountlist += x.item + '\n'
+                mountlist += mount[x].item + '\n'
             }
-            console.log(mountlist)
         }
         if (!pet) {
             petlist = 'No pets.'
@@ -55,9 +51,8 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in pet) {
-                petlist += x.item + '\n'
+                petlist += pet[x].item + '\n'
             }
-            console.log(petlist)
         }
 
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`

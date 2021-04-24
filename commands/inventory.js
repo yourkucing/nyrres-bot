@@ -26,6 +26,7 @@ module.exports.run = async(client, msg, args) => {
         if (!pet) {
             pet = 'No pets.'
         }
+        console.log(weapon)
 
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()

@@ -59,10 +59,10 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`**${profileData.characterName}'s** Inventory`)
 		.setDescription('You can see your money here.')
 		.addFields(
-		{ name: `Weapons`, value: `${weapon.item}`, inline: true},
-        { name: `Equipments`, value: `${equipment.item}`, inline: true},
-        { name: `Mounts`, value: `${mount.item}`},
-        { name: `Pets`, value: `${pet.item}`}
+		{ name: `Weapons`, value: `${weaponlist}`, inline: true},
+        { name: `Equipments`, value: `${equipmentlist}`, inline: true},
+        { name: `Mounts`, value: `${mountlist}`},
+        { name: `Pets`, value: `${petlist}`}
 		)
         .setThumbnail(`${url}`);
 		msg.channel.send(embed);

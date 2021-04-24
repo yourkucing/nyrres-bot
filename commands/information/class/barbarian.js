@@ -81,19 +81,19 @@ module.exports.run = async(client, msg, args) => {
                     3. An explorer’s pack and four javelins`},
                     { name: `Rage`, value: `In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
                     \nWhile raging, you gain these benefits if you aren’t wearing heavy armor:
-                                        
+                    
                     You have advantage on Strength checks & Strength saving throws.
                     When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table.
                     You have resistance to bludgeoning, piercing, & slashing damage.
                     If you are able to cast spells, you can’t cast them or concentrate on them while raging.
-                                        
+                    
                     Your rage lasts for 1 min. It ends early if you are knocked unconscious or if your turn ends and you haven’t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
-                                        
+                    
                     Once you have raged the number of times shown for your barbarian level, you must finish a long rest before you can rage again.`},
                     { name: `Unarmored Defense`, value: `While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.`},
                     { name: `Reckless Attack`, value: `Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.`},
                     { name: `Danger Sense`, value: `At 2nd level, you gain an uncanny sense of when things nearby aren’t as they should be, giving you an edge when you dodge away from danger.
-                
+
                     You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can’t be blinded, deafened, or incapacitated.`},
                     { name: `Primal Path`, value: `At 3rd level, you choose a path that shapes the nature of your rage. The Path of the Berserker is detailed at the end of the class description, and additional primal paths are available in other sources. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.`},
                     { name: `Ability Score Improvement`, value: `When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.`}

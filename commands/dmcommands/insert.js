@@ -1,5 +1,5 @@
-const profileModel = require('../models/profileSchema');
-const inventoryModel = require('../models/inventorySchema');
+const profileModel = require('../../models/profileSchema');
+const inventoryModel = require('../../models/inventorySchema');
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {

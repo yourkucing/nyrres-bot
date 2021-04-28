@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const { MongooseDocument } = require('mongoose');
 
 module.exports.run = async(client, msg, args) => {
-    let hooman = msg.author.id
+    let hooman = msg.author
     storeData = await storeModel.find()
     if (!storeData) {
         msg.channel.send(`Sorry ${msg.author}, the shop is closed as it has ran out of stocks. Please come back at a later time.`)

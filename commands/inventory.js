@@ -29,7 +29,6 @@ module.exports.run = async(client, msg, args) => {
         }
         if (equipment.length == 0) {
             equipmentlist = 'No equipments.'
-            console.log('ok')
         }
         else {
             for (x in equipment) {
@@ -38,7 +37,6 @@ module.exports.run = async(client, msg, args) => {
         }
         if (mount.length == 0) {
             mountlist = 'No mounts.'
-            console.log('ok')
         }
         else {
             for (x in mount) {
@@ -47,7 +45,6 @@ module.exports.run = async(client, msg, args) => {
         }
         if (pet.length == 0) {
             petlist = 'No pets.'
-            console.log('ok')
         }
         else {
             for (x in pet) {
@@ -61,10 +58,10 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`**${profileData.characterName}'s** Inventory`)
 		.setDescription('You can see your inventory here.')
 		.addFields(
-		{ name: `Weapons`, value: `${weaponlist}`, inline: true},
-        { name: `Equipments`, value: `${equipmentlist}`, inline: true},
-        { name: `Mounts`, value: `${mountlist}`},
-        { name: `Pets`, value: `${petlist}`}
+		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``, inline: true},
+        { name: `:mage: Equipments`, value: `\`${equipmentlist}\``, inline: true},
+        { name: `:racehorse: Mounts`, value: `\`${mountlist}\``},
+        { name: `:wolf: Pets`, value: `\`${petlist}\``}
 		)
         .setThumbnail(`${url}`);
 		msg.channel.send(embed);

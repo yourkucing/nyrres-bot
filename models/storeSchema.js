@@ -1,22 +1,16 @@
 const mongoose = require('mongoose');
 
 const storeSchema = new mongoose.Schema({
-    weapon: {
-        name: { type: String, default: null},
-        price: { type: Number, default: 0}
-    },
-    mount: {
-        name: { type: String, default: null},
-        price: { type: Number, default: 0}
-    },
-    consumable: {
-        name: { type: String, default: null},
-        price: { type: Number, default: 0}
-    },
-    equipment: {
-        name: { type: String, default: null},
-        price: { type: Number, default: 0}
-    }
+    item: { type: String, default: null},
+    price: 
+        { 
+            copper: { type: Number, default: 0},
+            silver: { type: Number, default: 0},
+            electrum: { type: Number, default: 0},
+            gold: { type: Number, default: 0},
+            platinum: { type: Number, default: 0}
+        },
+    category: { type: String, default: null}
 })
 
 const model = mongoose.model('storeModels', storeSchema);

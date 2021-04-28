@@ -6,6 +6,7 @@ module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
     let guild = msg.guild.id
     const words = args.join(' ')
+    stuffs = stuffs.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
     stuffs = words.split(',')
     stuffs[0] = stuffs[0].trim()
     stuffs[1] = stuffs[1].trim()

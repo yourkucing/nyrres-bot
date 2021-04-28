@@ -10,7 +10,8 @@ const storeSchema = new mongoose.Schema({
             gold: { type: Number, default: 0},
             platinum: { type: Number, default: 0}
         },
-    category: { type: String, default: null}
+    category: { type: String, default: null},
+    description: { type: String, default: null}
 })
 
 const model = mongoose.model('storeModels', storeSchema);

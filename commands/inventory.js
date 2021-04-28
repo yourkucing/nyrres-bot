@@ -13,11 +13,13 @@ module.exports.run = async(client, msg, args) => {
         equipment = await inventoryModel.find({userID: hooman, category: 'equipment'})
         mount = await inventoryModel.find({userID: hooman, category: 'mount'})
         pet = await inventoryModel.find({userID: hooman, category: 'pet'})
+        consumable = await inventoryModel.find({userID: hooman, category: 'consumable'})
 
         weaponlist = ''
         equipmentlist = ''
         mountlist = ''
         petlist = ''
+        consumablelist = ''
 
         if (weapon.length == 0) {
             weaponlist = 'No weapons.'
@@ -51,6 +53,14 @@ module.exports.run = async(client, msg, args) => {
                 petlist += pet[x].item + '\n'
             }
         }
+        if (consumable.length == 0) {
+            consumablelist = 'No consumables.'
+        }
+        else {
+            for (x in consumable) {
+                consumablelist += consumable[x].item + '\n'
+            }
+        }
 
         url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
         const embed = new Discord.MessageEmbed()
@@ -60,8 +70,9 @@ module.exports.run = async(client, msg, args) => {
 		.addFields(
 		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``, inline: true},
         { name: `:mage: Equipments`, value: `\`${equipmentlist}\``, inline: true},
-        { name: `:racehorse: Mounts`, value: `\`${mountlist}\``},
-        { name: `:wolf: Pets`, value: `\`${petlist}\``}
+        { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``, inline: true},
+        { name: `:racehorse: Mounts`, value: `\`${mountlist}\``, inline: true},
+        { name: `:wolf: Pets`, value: `\`${petlist}\``, inline: true}
 		)
         .setThumbnail(`${url}`);
 		msg.channel.send(embed);

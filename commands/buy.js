@@ -1,10 +1,12 @@
 const profileModel = require('../models/profileSchema');
 const moneyModel = require('../models/moneySchema');
+const inventoryModel = require('../models/inventorySchema');
 const storeModel = require('../models/storeSchema');
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author
+    let guild = msg.guild.id
     words = args.join(" ").replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
     words = words.trim()
     storeData = await storeModel.findOne({item: words})
@@ -46,13 +48,13 @@ module.exports.run = async(client, msg, args) => {
                 else {
                     mytotal = mytotal - total
                     platinum = Math.floor(mytotal/1000)
-                    mytotal -= platinum
+                    mytotal -= (platinum * 1000)
                     gold = Math.floor(mytotal/100)
-                    mytotal -= gold
+                    mytotal -= (gold * 100)
                     electrum = Math.floor(mytotal/50)
-                    mytotal -= electrum
+                    mytotal -= (electrum * 50)
                     silver = Math.floor(mytotal/10)
-                    copper = mytotal - silver
+                    copper = mytotal - (silver * 10)
                     newmoney = await moneyModel.findOneAndUpdate({userID: hooman.id}, {
                                     $set: {
                                         money: {
@@ -64,6 +66,14 @@ module.exports.run = async(client, msg, args) => {
                                         }
                                     }
                                 })
+
+                    inventory = inventoryModel.create({
+                        userID = hooman.id,
+                        serverID = guild,
+                        characterName = moneyData.characterName,
+                        item = storeData.item,
+                        category = storeData.category
+                    })
                     msg.channel.send(`\`${money} has been deducted from ${moneyData.characterName}.\``)
                 }
             } catch(err) {

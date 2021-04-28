@@ -68,11 +68,11 @@ module.exports.run = async(client, msg, args) => {
                                 })
 
                     inventory = inventoryModel.create({
-                        userID = hooman.id,
-                        serverID = guild,
-                        characterName = moneyData.characterName,
-                        item = storeData.item,
-                        category = storeData.category
+                        userID: hooman.id,
+                        serverID: guild,
+                        characterName: moneyData.characterName,
+                        item: storeData.item,
+                        category: storeData.category
                     })
                     msg.channel.send(`\`${money} has been deducted from ${moneyData.characterName}.\``)
                 }

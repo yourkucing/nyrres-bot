@@ -28,7 +28,7 @@ module.exports.run = async(client, msg, args) => {
                         }
                         else {
                             category = collected.first().content.toLowerCase();
-                            if (category != 'weapon' || category != 'equipment' || category != 'consumable' || category != 'mount' || category != 'pet') {
+                            if (category != 'weapon' && category != 'equipment' && category != 'consumable' && category != 'mount' && category != 'pet') {
                                 msg.channel.send(`Sorry, this category does not exist. Please restart to insert new items into Tayo's Store.`);
                             }
                             else {

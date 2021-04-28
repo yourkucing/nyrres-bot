@@ -14,11 +14,13 @@ module.exports.run = async(client, msg, args) => {
         equipment = await storeModel.find({category: 'equipment'})
         mount = await storeModel.find({category: 'mount'})
         pet = await storeModel.find({category: 'pet'})
+        consumable = await storeModel.find({category: 'consumable'})
 
         weaponlist = ''
         equipmentlist = ''
         mountlist = ''
         petlist = ''
+        consumablelist = ''
 
         if (weapon.length == 0) {
             weaponlist = 'No weapons.'
@@ -52,11 +54,20 @@ module.exports.run = async(client, msg, args) => {
                 petlist += pet[x].item + '\nDescription: ' + pet[x].description + '\n' + pet[x].price.copper + 'CP ' + pet[x].price.silver + 'SP ' + pet[x].price.electrum + 'EP ' + pet[x].price.gold + 'GP ' + pet[x].price.platinum + 'PP\n\n'
             }
         }
+        if (consumable.length == 0) {
+            consumablelist = 'No consumables.'
+        }
+        else {
+            for (x in consumable) {
+                consumablelist += consumable[x].item + '\nDescription: ' + consumable[x].description + '\n' + consumable[x].price.copper + 'CP ' + consumable[x].price.silver + 'SP ' + consumable[x].price.electrum + 'EP ' + consumable[x].price.gold + 'GP ' + pet[x].price.platinum + 'PP\n\n'
+            }
+        }
 
         weaponlist = weaponlist.trim()
         equipmentlist = equipmentlist.trim()
         mountlist = mountlist.trim()
         petlist = petlist.trim()
+        consumablelist = consumablelist.trim()
 
         let page = 1;
         url = `https://i.ibb.co/vhyn8Pt/Screenshot-2021-04-28-at-4-32-13-PM.png`
@@ -68,7 +79,7 @@ module.exports.run = async(client, msg, args) => {
 		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``}
 		)
         .setThumbnail(`${url}`)
-        .setFooter(`Page ${page} of 4.`);
+        .setFooter(`Page ${page} of 5.`);
 		msg.channel.send(embed).then(msg => {
             msg.react('⏪').then(r => {
                 msg.react('⏩')
@@ -97,21 +108,28 @@ module.exports.run = async(client, msg, args) => {
                         embed.addFields(
                             { name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``}
                         )
-                        embed.setFooter(`Page ${page} of 4.`);
+                        embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 2) {
                         embed.addFields(
                             { name: `:mage: Equipments`, value: `\`${equipmentlist}\``}
                         )
-                        embed.setFooter(`Page ${page} of 4.`);
+                        embed.setFooter(`Page ${page} of 5.`);
+                        msg.edit(embed)
+                    }
+                    else if (page == 4) {
+                        embed.addFields(
+                            { name: `:racehorse: Mounts`, value: `\`${mountlist}\``}
+                        )
+                        embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 3) {
                         embed.addFields(
-                            { name: `:racehorse: Mounts`, value: `\`${mountlist}\``}
+                            { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``}
                         )
-                        embed.setFooter(`Page ${page} of 4.`);
+                        embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     msg.reactions.resolve('⏪').users.remove(hooman.id);
@@ -122,28 +140,35 @@ module.exports.run = async(client, msg, args) => {
                 })
 
                 forwards.on('collect', (reaction, user) => {
-                    if (page === 4) return;
+                    if (page === 5) return;
                     page++;
                     embed.fields = []
                     if (page == 2) {
                         embed.addFields(
                             { name: `:mage: Equipments`, value: `\`${equipmentlist}\``}
                         )
-                        embed.setFooter(`Page ${page} of 4.`);
-                        msg.edit(embed)
-                    }
-                    else if (page == 3) {
-                        embed.addFields(
-                            { name: `:racehorse: Mounts`, value: `\`${mountlist}\``}
-                        )
-                        embed.setFooter(`Page ${page} of 4.`);
+                        embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 4) {
                         embed.addFields(
+                            { name: `:racehorse: Mounts`, value: `\`${mountlist}\``}
+                        )
+                        embed.setFooter(`Page ${page} of 5.`);
+                        msg.edit(embed)
+                    }
+                    else if (page == 3) {
+                        embed.addFields(
+                            { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``}
+                        )
+                        embed.setFooter(`Page ${page} of 5.`);
+                        msg.edit(embed)
+                    }
+                    else if (page == 5) {
+                        embed.addFields(
                             { name: `:wolf: Pets`, value: `\`${petlist}\``}
                         )
-                        embed.setFooter(`Page ${page} of 4.`);
+                        embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     msg.reactions.resolve('⏩').users.remove(hooman.id);

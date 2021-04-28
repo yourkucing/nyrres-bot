@@ -34,7 +34,7 @@ module.exports.run = async(client, msg, args) => {
             if (storeData.price.platinum != 0) {
                 money += `${storeData.price.platinum} PP `
             }
-            msg.channel.send(`You're buying **${storeData.item}**? That would be a total of **${money}.`)
+            msg.channel.send(`You're buying **${storeData.item}**? That would be a total of **${money}**.`)
 
             try {
                 mytotal = moneyData.money.copper + 10 * moneyData.money.silver + 50 * moneyData.money.electrum + 100 * moneyData.money.gold + 1000 * moneyData.money.platinum
@@ -53,17 +53,17 @@ module.exports.run = async(client, msg, args) => {
                     mytotal -= electrum
                     silver = Math.floor(mytotal/10)
                     copper = mytotal - silver
-                    moneyModel.updateOne({userID: hooman.id}, {
-                        $set: {
-                            money: {
-                                copper: copper,
-                                silver: silver,
-                                electrum: electrum,
-                                gold: gold,
-                                platinum: platinum
-                            }
-                        }
-                    })
+                    newmoney = moneyModel.findOneAndUpdate({userID: hooman.id}, {
+                                    $set: {
+                                        money: {
+                                            copper: copper,
+                                            silver: silver,
+                                            electrum: electrum,
+                                            gold: gold,
+                                            platinum: platinum
+                                        }
+                                    }
+                                })
                     msg.channel.send(`\`${money} has been deducted from ${moneyData.characterName}.\``)
                 }
             } catch(err) {

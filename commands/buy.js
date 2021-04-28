@@ -53,7 +53,7 @@ module.exports.run = async(client, msg, args) => {
                     mytotal -= electrum
                     silver = Math.floor(mytotal/10)
                     copper = mytotal - silver
-                    newmoney = moneyModel.findOneAndUpdate({userID: hooman.id}, {
+                    newmoney = await moneyModel.findOneAndUpdate({userID: hooman.id}, {
                                     $set: {
                                         money: {
                                             copper: copper,

@@ -58,6 +58,7 @@ module.exports.run = async(client, msg, args) => {
             consumablelist = 'No consumables.'
         }
         else {
+            console.log(consumable)
             for (x in consumable) {
                 consumablelist += consumable[x].item + '\nDescription: ' + consumable[x].description + '\n' + consumable[x].price.copper + 'CP ' + consumable[x].price.silver + 'SP ' + consumable[x].price.electrum + 'EP ' + consumable[x].price.gold + 'GP ' + pet[x].price.platinum + 'PP\n\n'
             }

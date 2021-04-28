@@ -54,7 +54,7 @@ module.exports.run = async(client, msg, args) => {
         }
 
         let page = 1;
-        url = `https://i.pinimg.com/originals/0e/39/04/0e39041593d65e52ac525ebaff57fe29.png`
+        url = `https://i.ibb.co/vhyn8Pt/Screenshot-2021-04-28-at-4-32-13-PM.png`
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
 		.setTitle(`Tayo's Market`)

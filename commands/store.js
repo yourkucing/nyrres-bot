@@ -25,7 +25,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in weapon) {
-                weaponlist += weapon[x].item + '\n' + weapon[x].price[0] + 'CP' + weapon[x].price[1] + 'SP' + weapon[x].price[2] + 'EP' + weapon[x].price[3] + 'GP' + weapon[x].price[4] + 'PP\n\n'
+                weaponlist += weapon[x].item + '\n' + weapon[x].copper + 'CP' + weapon[x].silver + 'SP' + weapon[x].electrum + 'EP' + weapon[x].gold + 'GP' + weapon[x].platinum + 'PP\n\n'
             }
         }
         if (equipment.length == 0) {
@@ -33,7 +33,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in equipment) {
-                equipmentlist += equipment[x].item + '\n' + equipment[x].price[0] + 'CP' + equipment[x].price[1] + 'SP' + equipment[x].price[2] + 'EP' + equipment[x].price[3] + 'GP' + equipment[x].price[4] + 'PP\n\n'
+                equipmentlist += equipment[x].item + '\n' + equipment[x].copper + 'CP' + equipment[x].silver + 'SP' + equipment[x].electrum + 'EP' + equipment[x].gold + 'GP' + equipment[x].platinum + 'PP\n\n'
             }
         }
         if (mount.length == 0) {
@@ -41,7 +41,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in mount) {
-                mountlist += mount[x].item + '\n' + mount[x].price[0] + 'CP' + mount[x].price[1] + 'SP' + mount[x].price[2] + 'EP' + mount[x].price[3] + 'GP' + mount[x].price[4] + 'PP\n\n'
+                mountlist += mount[x].item + '\n' + mount[x].copper + 'CP' + mount[x].silver + 'SP' + mount[x].electrum + 'EP' + mount[x].gold + 'GP' + mount[x].platinum + 'PP\n\n'
             }
         }
         if (pet.length == 0) {
@@ -49,7 +49,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in pet) {
-                petlist += pet[x].item + '\n' + pet[x].price[0] + 'CP' + pet[x].price[1] + 'SP' + pet[x].price[2] + 'EP' + pet[x].price[3] + 'GP' + pet[x].price[4] + 'PP\n\n'
+                petlist += pet[x].item + '\n' + pet[x].copper + 'CP' + pet[x].silver + 'SP' + pet[x].electrum + 'EP' + pet[x].gold + 'GP' + pet[x].platinum + 'PP\n\n'
             }
         }
 
@@ -141,10 +141,9 @@ module.exports.run = async(client, msg, args) => {
                         embed.setFooter(`Page ${page} of 4.`);
                         msg.edit(embed)
                     }
-                    msg.reactions.resolve('⏪').users.remove(hooman.id);
+                    msg.reactions.resolve('⏩').users.remove(hooman.id);
                 })
 
-                
 
                 forwards.on('end', collected => {
                     msg.reactions.cache.get('⏩').remove()

@@ -70,7 +70,7 @@ module.exports.run = async(client, msg, args) => {
 		.addFields(
 		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``, inline: true},
         { name: `:mage: Equipments`, value: `\`${equipmentlist}\``, inline: true},
-        { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``, inline: true},
+        { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``, inline: false},
         { name: `:racehorse: Mounts`, value: `\`${mountlist}\``, inline: true},
         { name: `:wolf: Pets`, value: `\`${petlist}\``, inline: true}
 		)

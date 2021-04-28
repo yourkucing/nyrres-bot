@@ -74,7 +74,7 @@ module.exports.run = async(client, msg, args) => {
                         item: storeData.item,
                         category: storeData.category
                     })
-                    msg.channel.send(`\`${money} has been deducted from ${moneyData.characterName}.\``)
+                    msg.channel.send(`\`${money}has been deducted from ${moneyData.characterName}.\``)
                 }
             } catch(err) {
                 console.log(err)

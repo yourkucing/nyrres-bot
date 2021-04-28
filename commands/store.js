@@ -20,7 +20,7 @@ module.exports.run = async(client, msg, args) => {
         mountlist = ''
         petlist = ''
 
-        if (weapon.length != 0) {
+        if (weapon.length == 0) {
             weaponlist = 'No weapons.'
         }
         else {
@@ -58,7 +58,7 @@ module.exports.run = async(client, msg, args) => {
         const embed = new Discord.MessageEmbed()
 		.setColor('#FF69B4')
 		.setTitle(`Tayo's Market`)
-		.setDescription(`You can purchase items here.\n\`Click on the arrow reactions to change pages. Once you're done, you can click on the STOP reaction.`)
+		.setDescription(`You can purchase items here.\n\`Click on the arrow reactions to change pages. Once you're done, you can click on the STOP reaction.\``)
 		.addFields(
 		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``}
 		)
@@ -112,6 +112,10 @@ module.exports.run = async(client, msg, args) => {
                     msg.reactions.resolve('⏪').users.remove(hooman.id);
                 })
 
+                backwards.on('end', collected => {
+                    msg.reactions.cache.get('⏪').remove()
+                })
+
                 forwards.on('collect', (reaction, user) => {
                     if (page === 4) return;
                     page++;
@@ -140,9 +144,7 @@ module.exports.run = async(client, msg, args) => {
                     msg.reactions.resolve('⏪').users.remove(hooman.id);
                 })
 
-                backwards.on('end', collected => {
-                    msg.reactions.cache.get('⏪').remove()
-                })
+                
 
                 forwards.on('end', collected => {
                     msg.reactions.cache.get('⏩').remove()

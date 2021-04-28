@@ -6,10 +6,9 @@ module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
     let guild = msg.guild.id
     const words = args.join(' ')
-    words = words.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
     stuffs = words.split(',')
-    stuffs[0] = stuffs[0].trim()
-    stuffs[1] = stuffs[1].trim()
+    stuffs[0] = stuffs[0].trim().replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
+    stuffs[1] = stuffs[1].trim().replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
     msg.channel.send(`Greetings, ${msg.guild.members.cache.get(msg.author.id).displayName}. Please key in the price of the item in the format cp, sp, ep, gp, pp (eg. 2, 3, 15, 7, 0): ("exit" to exit.)`);
     msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
         if (collected.first().content.toLowerCase() == 'exit') {

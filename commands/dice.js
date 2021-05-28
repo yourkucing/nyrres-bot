@@ -45,7 +45,8 @@ module.exports.run = async(client, msg, args) => {
             }
             else if (parseInt(dice[0]) === 1) {
                 result = Math.floor(Math.random() * dice[1]) + 1
-                msg.channel.send("```\nResult: " + result + "\nDetails: " + args[0] + " (" + result + " " + args[1] + ")\n```");        
+                final = result + number
+                msg.channel.send("```\nResult: " + final + "\nDetails: " + args[0] + " (" + result + " " + args[1] + ")\n```");        
             }
             else if (parseInt(dice[0]) > 1) {
                 n = 0
@@ -56,7 +57,8 @@ module.exports.run = async(client, msg, args) => {
                     n = n + 1
                 }
                 total = L.reduce((a, b) => a + b)
-                msg.channel.send("```\nResult: " + total + "\nDetails: " + args[0] + " (" + L + " " + args[1] + ")\n```");
+                final = total + number
+                msg.channel.send("```\nResult: " + final + "\nDetails: " + args[0] + " (" + L + " " + args[1] + ")\n```");
             }
         }
     }

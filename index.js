@@ -5,6 +5,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const mongoose = require('mongoose');
 const profileModel = require('./models/profileSchema');
+const moneyModel = require('./models/moneySchema')
 
 client.commands = new Map();
 
@@ -25,6 +26,8 @@ client.on('ready', () => {
  });
 
  client.on('message', msg => {
+    if (msg.author.bot) return
+
     let profileData;
     try {
         profileData = profileModel.find({ userID: msg.author.id})
@@ -33,6 +36,20 @@ client.on('ready', () => {
         }
     } catch (err){
         console.log(err);
+    }
+
+    if(msg.channel.id == "834683384143675423"){
+        moneyModel.findOneAndUpdate({userID: msg.author.id}, {
+            $inc: {
+                money: {
+                    copper: 2
+                }
+            }
+        }).then(result => {
+            if(!result) {
+                console.log(result)
+            }
+        }).catch(e => {console.log(e)})
     }
 
     var message = msg.content.toLowerCase()

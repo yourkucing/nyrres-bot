@@ -41,7 +41,7 @@ client.on('ready', () => {
     if(msg.channel.id == "834683384143675423"){
         moneyModel.findOneAndUpdate({userID: msg.author.id}, {
             $inc: {
-                "money.$.copper": 2
+                "money.copper": 2
             }
         }).then(result => {
             if(!result) {

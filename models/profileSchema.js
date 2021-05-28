@@ -14,12 +14,12 @@ const profileSchema = new mongoose.Schema({
     hitdie: { type: String, default: null},
     proficiency: { type: Number, default: 2},
     ability: {
-        strength: { type: Number, default: 0},
-        dexterity: { type: Number, default: 0},
-        constitution: {type: Number, default: 0},
-        intellect: { type: Number, default: 0},
-        wisdom: {type: Number, default: 0},
-        charisma: {type: Number, default: 0}
+        strength: { type: String},
+        dexterity: { type: String},
+        constitution: { type: String},
+        intellect: { type: String},
+        wisdom: { type: String},
+        charisma: { type: String}
     },
     notes: { type: String, default: null }
 })

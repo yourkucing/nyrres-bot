@@ -27,28 +27,28 @@ module.exports.run = async(client, msg, args) => {
                     }
                     else {
                         genderInput = collected.first().content;
-                        msg.channel.send(`Please choose a race: ("exit" to exit.)\nRefer to _ny race_ if need be.`);
+                        msg.channel.send(`Please choose a race: ("exit" to exit.)`);
                         msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                             if (collected.first().content.toLowerCase() == 'exit') {
                                 msg.channel.send("Goodbye for now!");
                             }
                             else {
                                 raceInput = collected.first().content;
-                                msg.channel.send(`Please choose a subrace: ("exit" to exit.)\nRefer to _ny race_ if need be.\nDwarf: Hill Dwarf or Mountain Dwarf\nElf: Eladrin, High Elf or Wood Elf\nGnome: Deep Gnome or Rock Gnome\nHalfling: Lightfoot Halfling or Stout Halfling\nIf your character is not part of these, please answer "None" `)
+                                msg.channel.send(`Please choose a subrace: ("exit" to exit.)\nDwarf: Hill Dwarf or Mountain Dwarf\nElf: Eladrin, High Elf or Wood Elf\nGnome: Deep Gnome or Rock Gnome\nHalfling: Lightfoot Halfling or Stout Halfling\nIf your character is not part of these, please answer "None" `)
                                 msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                                     if (collected.first().content.toLowerCase() == 'exit') {
                                         msg.channel.send("Goodbye for now!")
                                     }
                                     else {
                                         subraceInput = collected.first().content;
-                                        msg.channel.send(`Please choose a class: ("exit" to exit.)\nRefer to _ny class_ if need be.`);
+                                        msg.channel.send(`Please choose a class: ("exit" to exit.)`);
                                         msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                                             if (collected.first().content.toLowerCase() == 'exit') {
                                                 msg.channel.send("Goodbye for now!")
                                             }
                                             else {
                                                 classInput = collected.first().content;
-                                                msg.channel.send(`Please choose an alignment: ("exit" to exit.)\nAlignment:\nLawful good, Neutral good, Chaotic good, Lawful neutral, Neutral, Chaotic neutral, Lawful evil, Neutral evil, Chaotic evil.\nYou can refer to *ny alignments* for more details.`);
+                                                msg.channel.send(`Please choose an alignment: ("exit" to exit.)\nAlignment:\nLawful good, Neutral good, Chaotic good, Lawful neutral, Neutral, Chaotic neutral, Lawful evil, Neutral evil, Chaotic evil.`);
                                                 msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                                                     if (collected.first().content.toLowerCase() == 'exit') {
                                                         msg.channel.send("Goodbye for now!")

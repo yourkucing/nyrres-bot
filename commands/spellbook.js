@@ -40,7 +40,8 @@ module.exports.run = async(client, msg, args) => {
             }
             else {
                 for (x in slots) {
-                    slotlist += `**${x+1}.** ${slots[x].spell}\n`
+                    console.log(x)
+                    slotlist += (x+1) + `. ` + slots[x].spell + '\n'
                 }
             }
     

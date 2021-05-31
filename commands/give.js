@@ -1,5 +1,7 @@
 const inventoryModel = require('../models/inventorySchema');
+const profileModel = require('../models/profileSchema');
 const Discord = require('discord.js');
+const { findOne } = require('../models/profileSchema');
 
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
@@ -9,21 +11,29 @@ module.exports.run = async(client, msg, args) => {
     }
     else {
         tagged = msg.mentions.members.first()
+        taggedUser = await profileModel.findOne({userID: tagged.id})
         item = args.slice(1).join(" ")
         if (item.size == 0) {
             msg.channel.send(`What are you giving?`)
             return
         }
         else {
-            itemsearch = await inventoryModel.findOneAndDelete({userID: hooman, item: item}, function (err, docs)
-            {
-                if(err) {
-                    msg.channel.send(`No such item!`)
-                }
-                else {
-                    msg.channel.send(docs.category)
-                }
-            })
+            itemsearch = await inventoryModel.findOne({userID: hooman, item: item})
+            if (!itemsearch) {
+                msg.channel.send(`No such item!`)
+            }
+            else {
+                category = itemsearch.category
+                inventoryModel.deleteOne({userID: hooman, item: item}).then(give => {
+                    inventoryModel.create({
+                        userID: hooman,
+                        serverID: msg.guild.id,
+                        characterName: taggedUser.characterName,
+                        item: item,
+                        category: category
+                    });
+                })
+            }
         }
     }
 }

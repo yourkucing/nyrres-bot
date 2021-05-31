@@ -40,7 +40,7 @@ module.exports.run = async(client, msg, args) => {
             }
             else {
                 for (x in slots) {
-                    console.log(x)
+                    x = parseInt(x)
                     slotlist += (x+1) + `. ` + slots[x].spell + '\n'
                 }
             }

@@ -88,21 +88,23 @@ module.exports.run = async(client, msg, args) => {
                 else {
                     itemname = collected.first().content
                     msg.channel.send(`Please key in the type (weapon, equipment, mount, pet, consumable): ("exit" to exit.)`)
-                    if (collected.first().content.toLowerCase() == 'exit') {
-                        msg.channel.send("Goodbye for now!");
-                        return
-                    }
-                    else {
-                        typename = collected.first().content
-                        let inventory = inventoryModel.create({
-                            userID: hooman,
-                            serverID: msg.guild.id,
-                            characterName: profileData.characterName,
-                            item: itemname,
-                            category: typename
-                        });
-                        msg.channel.send(`Item saved!`)
-                    }
+                    msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
+                        if (collected.first().content.toLowerCase() == 'exit') {
+                            msg.channel.send("Goodbye for now!");
+                            return
+                        }
+                        else {
+                            typename = collected.first().content
+                            let inventory = inventoryModel.create({
+                                userID: hooman,
+                                serverID: msg.guild.id,
+                                characterName: profileData.characterName,
+                                item: itemname,
+                                category: typename
+                            });
+                            msg.channel.send(`Item saved!`)
+                        }
+                    })
                 }
             })
         }

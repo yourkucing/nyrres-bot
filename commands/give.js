@@ -31,8 +31,13 @@ module.exports.run = async(client, msg, args) => {
                         characterName: taggedUser.characterName,
                         item: item,
                         category: category
-                    });
+                    }).then(receive => {
+                        if (receive) {
+                            msg.channel.send(`You have given ${tagged.displayName} **${item}**.`)
+                        }
+                    })
                 })
+                
             }
         }
     }

@@ -4,7 +4,8 @@ const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
-    if (!args){
+    words = args.join(" ")
+    if (!words){
         profileData = await profileModel.findOne({userID: hooman})
         if (!profileData) {
             msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
@@ -63,7 +64,6 @@ module.exports.run = async(client, msg, args) => {
             msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
         }
         else {
-            words = args.join(" ")
             msg.channel.send(`Please key in the spell type: ("exit" to exit.)`);
             msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                 if (collected.first().content.toLowerCase() == 'exit') {

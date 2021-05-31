@@ -115,14 +115,14 @@ module.exports.run = async(client, msg, args) => {
                 }
                 else {
                     item = collected.first().content 
-                    itemsearch = await inventoryModel.findOneAndDelete({userID: hooman, item: item})
-                    if (itemsearch) {
-                        msg.channel.send(`Item deleted!`)
-                    }
-                    else {
-                        msg.channel.send(`No such item!`)
-                    }
-                    
+                    inventoryModel.findOneAndDelete({userID: hooman, item: item}).then(itemsearch => {
+                        if (itemsearch) {
+                            msg.channel.send(`Item deleted!`)
+                        }
+                        else {
+                            msg.channel.send(`No such item!`)
+                        }
+                    })
                 }
             })
         }

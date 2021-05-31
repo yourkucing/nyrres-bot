@@ -24,7 +24,7 @@ module.exports.run = async(client, msg, args) => {
             }
             else {
                 category = itemsearch.category
-                inventoryModel.deleteOne({userID: hooman, item: item}).then(give => {
+                inventoryModel.findOneAndDelete({userID: hooman, item: item}).then(give => {
                     inventoryModel.create({
                         userID: hooman,
                         serverID: msg.guild.id,

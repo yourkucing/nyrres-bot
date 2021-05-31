@@ -15,13 +15,15 @@ module.exports.run = async(client, msg, args) => {
             return
         }
         else {
-            itemsearch = await inventoryModel.findOneAndDelete({userID: hooman, item: item})
-            if (!consumable) {
-                msg.channel.send(`No such item!`)
-            }
-            else {
-                msg.channel.send(itemsearch.category)
-            }
+            itemsearch = await inventoryModel.findOneAndDelete({userID: hooman, item: item}, function (err, docs)
+            {
+                if(err) {
+                    msg.channel.send(`No such item!`)
+                }
+                else {
+                    msg.channel.send(docs.category)
+                }
+            })
         }
     }
 }

@@ -49,7 +49,7 @@ module.exports.run = async(client, msg, args) => {
             const embed = new Discord.MessageEmbed()
             .setColor('#FF69B4')
             .setTitle(`**${profileData.characterName}'s** Spellbook`)
-            .setDescription('You can see your inventory here.')
+            .setDescription('You can see your spells here.')
             .addFields(
             { name: `:sparkles: Cantrips`, value: `\`${cantriplist}\``, inline: true},
             { name: `:boom: Spells`, value: `\`${spelllist}\``, inline: true},

@@ -65,10 +65,11 @@ module.exports.run = async(client, msg, args) => {
             msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
         }
         else {
-            msg.channel.send(`Please key in the spell type: ("exit" to exit.)`);
+            msg.channel.send(`Please key in the spell type (cantrip, spell, slot): ("exit" to exit.)`);
             msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                 if (collected.first().content.toLowerCase() == 'exit') {
                     msg.channel.send("Goodbye for now!");
+                    return
                 }
                 else {
                     type = collected.first().content.toLowerCase()

@@ -40,7 +40,7 @@ module.exports.run = async(client, msg, args) => {
             }
             else {
                 for (x in cantrips) {
-                    slotlist += (x+1) + `. ` + cantrips[x].spell + '\n'
+                    slotlist += (x+1) + `. ` + slots[x].spell + '\n'
                 }
             }
     

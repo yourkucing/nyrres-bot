@@ -63,7 +63,7 @@ module.exports.run = async(client, msg, args) => {
             msg.channel.send(`Sorry ${msg.author}, you don't have a character! You can create one using **ny create**.`)
         }
         else {
-            words = args.join()
+            words = args.join(" ")
             msg.channel.send(`Please key in the spell type: ("exit" to exit.)`);
             msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                 if (collected.first().content.toLowerCase() == 'exit') {
@@ -73,7 +73,6 @@ module.exports.run = async(client, msg, args) => {
                     type = collected.first().content.toLowerCase()
                     let spellbook = spellModel.create({
                         userID: hooman,
-                        serverID: msg.guild.id,
                         characterName: profileData.characterName,
                         spell: words,
                         type: type

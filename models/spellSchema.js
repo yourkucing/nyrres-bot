@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const spellSchema = new mongoose.Schema({
     userID: { type: String, require: true, unique: true},
-    serverID: { type: String, require: true},
     characterName: { type: String, default: null},
     spell: { type: String, default: null},
     type: { type: String, default: null}

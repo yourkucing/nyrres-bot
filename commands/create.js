@@ -35,7 +35,7 @@ module.exports.run = async(client, msg, args) => {
                             }
                             else {
                                 raceInput = collected.first().content;
-                                msg.channel.send(`Please choose a subrace: ("exit" to exit.)\nDwarf: Hill Dwarf or Mountain Dwarf\nElf: Eladrin, High Elf or Wood Elf\nGnome: Deep Gnome or Rock Gnome\nHalfling: Lightfoot Halfling or Stout Halfling\nIf your character is not part of these, please answer "None" `)
+                                msg.channel.send(`Please choose a subrace: ("exit" to exit.)\nDragonborn: Choose a Dragon Ancestry - Blue, Black, Brass, Bronze, Copper, Gold, Green, Red, Silver, White\nDwarf: Hill Dwarf or Mountain Dwarf\nElf: Eladrin, High Elf or Wood Elf\nGnome: Deep Gnome or Rock Gnome\nHalfling: Lightfoot Halfling or Stout Halfling\nIf your character is not part of these, please answer "None" `)
                                 msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                                     if (collected.first().content.toLowerCase() == 'exit') {
                                         msg.channel.send("Goodbye for now!")
@@ -377,10 +377,7 @@ module.exports.run = async(client, msg, args) => {
                                                         else if (subraceInput.toLowerCase() == 'stout halfling') {
                                                             extraC += 1
                                                         }
-                                                        else {
-                                                            msg.channel.send(`You either don't have a subrace or you spelled it wrongly. Either way, do check back later!`)
-                                                        }
-                                                        if (subraceInput.toLowerCase == 'none') {
+                                                        else if (subraceInput.toLowerCase == 'none') {
                                                             subraceInput = "None"
                                                         }
 
@@ -414,7 +411,7 @@ module.exports.run = async(client, msg, args) => {
                                                             }
                                                             if (charisma == modifiers[x].score) {
                                                                 Chmod = modifiers[x].mod
-                                                                modCh = strength.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                                modCh = charisma.toString() + " (" + modifiers[x].mod.toString() + ")"
                                                             }
                                                         }
 

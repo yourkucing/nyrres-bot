@@ -154,6 +154,7 @@ module.exports.run = async(client, msg, args) => {
                                     }
                                     else {
                                         console.log("Something went wrong when changing EXP.")
+                                        console.log(change)
                                     }
                                 })
                         }
@@ -169,6 +170,7 @@ module.exports.run = async(client, msg, args) => {
                                     }
                                     else {
                                         console.log("Something went wrong when changing HP.")
+                                        console.log(change)
                                     }
                                 })
                         }

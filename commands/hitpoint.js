@@ -130,7 +130,7 @@ module.exports.run = async(client, msg, args) => {
     }
     else {
         if (msg.author.id == "279101053750870017") {
-            hooman = msg.mentions.members.first()
+            hooman = msg.mentions.members.first().id
             msg.channel.send(`Exp or HP?`)
             msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
                 if (collected.first().content.toLowerCase() == 'exit') {

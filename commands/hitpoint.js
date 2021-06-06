@@ -140,7 +140,8 @@ module.exports.run = async(client, msg, args) => {
                     change = collected.first().content.toLowerCase()
                     msg.channel.send(`How much?`)
                     msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
-                        number = parseInt(collected.first().content.toLowerCase())
+                        number = parseInt(collected.first().content)
+                        msg.channel.send(number)
                         if (change == "exp") {
                             hitpointModel.findOneAndUpdate({userID: hooman},
                                 {

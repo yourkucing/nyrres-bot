@@ -1,5 +1,6 @@
 const profileModel = require('../models/profileSchema');
 const hitpointModel = require('../models/hitpointSchema');
+const hplist = require('./hitpoints.json')
 const Discord = require('discord.js');
 
 module.exports.run = async(client, msg, args) => {
@@ -106,66 +107,11 @@ module.exports.run = async(client, msg, args) => {
                 hpbar = '██████████'
             }
     
-            if (hitpointData.level == 1) {
-                exp = 300
-            }
-            else if (hitpointData.level == 2) {
-                exp = 900
-            }
-            else if (hitpointData.level == 3) {
-                exp = 2700
-            }
-            else if (hitpointData.level == 4) {
-                exp = 6500
-            }
-            else if (hitpointData.level == 5) {
-                exp = 14000
-            }
-            else if (hitpointData.level == 6) {
-                exp = 23000
-            }
-            else if (hitpointData.level == 7) {
-                exp = 34000
-            }
-            else if (hitpointData.level == 8) {
-                exp = 48000
-            }
-            else if (hitpointData.level == 9) {
-                exp = 64000
-            }
-            else if (hitpointData.level == 10) {
-                exp = 85000
-            }
-            else if (hitpointData.level == 11) {
-                exp = 100000
-            }
-            else if (hitpointData.level == 12) {
-                exp = 120000
-            }
-            else if (hitpointData.level == 13) {
-                exp = 140000
-            }
-            else if (hitpointData.level == 14) {
-                exp = 165000
-            }
-            else if (hitpointData.level == 15) {
-                exp = 195000
-            }
-            else if (hitpointData.level == 16) {
-                exp = 225000
-            }
-            else if (hitpointData.level == 17) {
-                exp = 265000
-            }
-            else if (hitpointData.level == 18) {
-                exp = 305000
-            }
-            else if (hitpointData.level == 19) {
-                exp = 355000
-            }
-            else if (hitpointData.level == 20) {
-                exp = 355000
-            }
+            for (x in hplist) {
+                if (hitpointData.level == hplist[x].level) {
+                    exp = hplist[x].exp
+                }
+            } 
     
             num = (hitpointData.experience/exp)*100
     
@@ -185,7 +131,49 @@ module.exports.run = async(client, msg, args) => {
     else {
         if (msg.author.id == "279101053750870017") {
             hooman = msg.mentions.members.first()
-            msg.channel.send(args.join())
+            msg.channel.send(`Exp or HP?`)
+            msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
+                if (collected.first().content.toLowerCase() == 'exit') {
+                    msg.channel.send("Goodbye for now!")
+                }
+                else {
+                    change = collected.first().content.toLowerCase()
+                    msg.channel.send(`How much?`)
+                    msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
+                        number = parseInt(collected.first().content.toLowerCase())
+                        if (change == "exp") {
+                            hitpointModel.findOneAndUpdate({userID: hooman},
+                                {
+                                    $inc: { 
+                                        experience: number
+                                    }
+                                }).then(change => {
+                                    if (change) {
+                                        msg.channel.send("EXP changed!")
+                                    }
+                                    else {
+                                        console.log("Something went wrong when changing EXP.")
+                                    }
+                                })
+                        }
+                        else if (change == "hp") {
+                            hitpointModel.findOneAndUpdate({userID: hooman},
+                                {
+                                    $inc: { 
+                                        HP: number
+                                    }
+                                }).then(change => {
+                                    if (change) {
+                                        msg.channel.send("HP changed!")
+                                    }
+                                    else {
+                                        console.log("Something went wrong when changing HP.")
+                                    }
+                                })
+                        }
+                    })
+                }
+            })
         }
         else {
             msg.channel.send("You're not the DM. Ask your DM to do this!")

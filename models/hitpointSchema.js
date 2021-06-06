@@ -5,6 +5,7 @@ const hitpointSchema = new mongoose.Schema({
     serverID: { type: String, require: true},
     characterName: { type: String, default: null},
     class: { type: String, default: null},
+    armorclass: {type: Number, default: 0},
     maxHP: { type: Number, default: 0},
     HP: { type: Number, default: 0}, 
     level: { type: Number, default: 1},

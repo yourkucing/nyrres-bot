@@ -1,6 +1,7 @@
 const profileModel = require('../models/profileSchema');
 const hitpointModel = require('../models/hitpointSchema');
 const Discord = require('discord.js');
+const modifiers = require('./modifiers.json');
 
 module.exports.run = async(client, msg, args) => {
 	let hooman = msg.author.id;
@@ -72,9 +73,9 @@ module.exports.run = async(client, msg, args) => {
                                                             times = times + 1
                                                         }
 
-                                                        hitdie = 0
-                                                        savingthrows = null
-                                                        hp = null
+                                                        hitdie = "None"
+                                                        savingthrows = "None"
+                                                        hp = 0
 
                                                         strength = ability[0]
                                                         dexterity = ability[1]
@@ -266,7 +267,7 @@ module.exports.run = async(client, msg, args) => {
                                                             hp = 6
                                                         }
                                                         else {
-                                                            msg.channel.send(`I don't have your class in my system. Either way, I'll just randomly put it then!`)
+                                                            msg.channel.send(`I don't have your class in my system. Please get your admin to manually put in your saving throws, hitdie and HP using the DM commands.`)
                                                         }
                                                         msg.channel.send(`**Your ability points:**\nStrength: ${strength}\nDexterity: ${dexterity}\nConstitution: ${constitution}\nIntellect: ${intellect}\nWisdom: ${wisdom}\nCharisma: ${charisma}`);
                                                         
@@ -346,7 +347,7 @@ module.exports.run = async(client, msg, args) => {
                                                             extraI += 1
                                                         }
                                                         else {
-                                                            msg.channel.send(`Either you put a race that is not on the list or you spelled something wrongly, either way, no added traits have been added to your Ability Scores.`)
+                                                            msg.channel.send(`Either you put a race that is not on the list or you spelled something wrongly, either way, no added traits have been added to your Ability Scores. Your DM can do so using the DM commands.`)
                                                         }
 
                                                         if (subraceInput.toLowerCase() == 'hill dwarf') {
@@ -380,35 +381,70 @@ module.exports.run = async(client, msg, args) => {
                                                             msg.channel.send(`You either don't have a subrace or you spelled it wrongly. Either way, do check back later!`)
                                                         }
                                                         if (subraceInput.toLowerCase == 'none') {
-                                                            subraceInput = null
+                                                            subraceInput = "None"
+                                                        }
+
+                                                        strength = strength + extraS
+                                                        dexterity = dexterity + extraD
+                                                        constitution = constitution + extraC
+                                                        intellect = intellect + extraI
+                                                        wisdom = wisdom + extraW
+                                                        charisma = charisma + extraCh
+
+                                                        for (x in modifiers) {
+                                                            if (strength == modifiers[x].score) {
+                                                                Smod = modifiers[x].mod
+                                                                modS = strength.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                            }
+                                                            if (dexterity == modifiers[x].score) {
+                                                                Dmod = modifiers[x].mod
+                                                                modD = dexterity.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                            }
+                                                            if (constitution == modifiers[x].score) {
+                                                                Cmod = modifiers[x].mod
+                                                                modC = constitution.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                            }
+                                                            if (intellect == modifiers[x].score) {
+                                                                Imod = modifiers[x].mod
+                                                                modI = intellect.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                            }
+                                                            if (wisdom == modifiers[x].score) {
+                                                                Wmod = modifiers[x].mod
+                                                                modW = wisdom.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                            }
+                                                            if (charisma == modifiers[x].score) {
+                                                                Chmod = modifiers[x].mod
+                                                                modCh = strength.toString() + " (" + modifiers[x].mod.toString() + ")"
+                                                            }
                                                         }
 
                                                         try {
                                                             let profile = profileModel.create({
                                                                 userID: hooman,
                                                                 serverID: guild,
-                                                                characterName: nameInput,
-                                                                gender: genderInput,
-                                                                class: classInput,
-                                                                race: raceInput,
-                                                                subrace: subraceInput,
-                                                                alignment: alignmentInput,
-                                                                savingthrows: savingthrows,
+                                                                characterName: nameInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                gender: genderInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                class: classInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                race: raceInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                subrace: subraceInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                alignment: alignmentInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                savingthrows: savingthrows.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
                                                                 hitdie: hitdie,
                                                                 ability: {
-                                                                    strength: strength + extraS,
-                                                                    dexterity: dexterity + extraD,
-                                                                    constitution: constitution + extraC,
-                                                                    intellect: intellect + extraI,
-                                                                    wisdom: wisdom + extraW,
-                                                                    charisma: charisma + extraCh
+                                                                    strength: modS,
+                                                                    dexterity: modD,
+                                                                    constitution: modC,
+                                                                    intellect: modI,
+                                                                    wisdom: modW,
+                                                                    charisma: modCh
                                                                 }
                                                             });
                                                             let hitpoint = hitpointModel.create({
                                                                 userID: hooman,
                                                                 serverID: guild,
-                                                                characterName: nameInput,
-                                                                class: classInput,
+                                                                characterName: nameInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                class: classInput.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+                                                                armorclass: 10 + Dmod,
                                                                 HP: hp + constitution + extraC,
                                                                 maxHP: hp + constitution + extraC
                                                             });

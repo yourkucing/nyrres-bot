@@ -76,7 +76,7 @@ module.exports.run = async(client, msg, args) => {
                 }
             }
             if (!quiver) {
-                quivers = 0
+                quivers = ``
             }
             else {
                 quivers = `${parseInt(quiver.item)} Quivers\n`

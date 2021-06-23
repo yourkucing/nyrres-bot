@@ -17,6 +17,7 @@ module.exports.run = async(client, msg, args) => {
             consumable = await inventoryModel.find({userID: hooman, category: 'consumable'})
             space = await inventoryModel.findOne({userID: hooman, category: 'space'})
 
+            used = 0
             weaponlist = ''
             equipmentlist = ''
             mountlist = ''
@@ -30,6 +31,7 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in weapon) {
                     weaponlist += weapon[x].item + '\n'
+                    
                 }
             }
             if (equipment.length == 0) {
@@ -38,6 +40,7 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in equipment) {
                     equipmentlist += equipment[x].item + '\n'
+                    used += used
                 }
             }
             if (mount.length == 0) {
@@ -46,6 +49,7 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in mount) {
                     mountlist += mount[x].item + '\n'
+                    used += used
                 }
             }
             if (pet.length == 0) {
@@ -54,6 +58,7 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in pet) {
                     petlist += pet[x].item + '\n'
+                    used += used
                 }
             }
             if (consumable.length == 0) {
@@ -62,6 +67,7 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in consumable) {
                     consumablelist += consumable[x].item + '\n'
+                    used += used
                 }
             }
 
@@ -69,7 +75,7 @@ module.exports.run = async(client, msg, args) => {
             const embed = new Discord.MessageEmbed()
             .setColor('#FF69B4')
             .setTitle(`**${profileData.characterName}'s** Inventory`)
-            .setDescription(`Inventory space: ${space}/${space}`)
+            .setDescription(`Inventory space: ${space - used}/${space}`)
             .addFields(
             { name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``, inline: true},
             { name: `:mage: Equipments`, value: `\`${equipmentlist}\``, inline: true},

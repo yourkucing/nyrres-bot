@@ -169,13 +169,14 @@ module.exports.run = async(client, msg, args) => {
                                         msg.channel.send("HP changed!")
                                         msg.channel.send("Which channel ID do you want to send the update to? (Reply with \"exit\" if you do not want to send any update)")
                                         msg.channel.awaitMessages(m => m.author.id, {max: 1}).then(collected => {
+                                            msg.channel.send(collected.first().content)
                                             if (collected.first().content.toLowerCase() == "exit") {
                                                 msg.channel.send("Goodbye then!")
                                                 return
                                             }
                                             else {
                                                 update = client.channels.cache.get(collected.first().content)
-                                                hitpointModel.findOne({userID: hooman}).then(users => {
+/*                                                 hitpointModel.findOne({userID: hooman}).then(users => {
                                                     if (users) {
                                                         cond = [];
                                                         if (users.conditions.blinded == "yes") {
@@ -278,7 +279,7 @@ module.exports.run = async(client, msg, args) => {
                                                         .setThumbnail(`${url}`);
                                                         update.send(embed);
                                                     }
-                                                })
+                                                }) */
                                             }
                                         })
                                     }

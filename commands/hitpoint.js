@@ -131,15 +131,16 @@ module.exports.run = async(client, msg, args) => {
     else {
         if (msg.author.id == "279101053750870017") {
             hooman = msg.mentions.members.first().id
+            author = msg.author.id
             msg.channel.send(`Exp or HP?`)
-            msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
+            msg.channel.awaitMessages(m => m.author.id == author, {max: 1}).then(collected => {
                 if (collected.first().content.toLowerCase() == 'exit') {
                     msg.channel.send("Goodbye for now!")
                 }
                 else {
                     change = collected.first().content.toLowerCase()
                     msg.channel.send(`How much?`)
-                    msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1}).then(collected => {
+                    msg.channel.awaitMessages(m => m.author.id == author, {max: 1}).then(collected => {
                         number = parseInt(collected.first().content)
                         msg.channel.send(number)
                         if (change == "exp") {
@@ -168,15 +169,15 @@ module.exports.run = async(client, msg, args) => {
                                     if (change) {
                                         msg.channel.send("HP changed!")
                                         msg.channel.send("Which channel ID do you want to send the update to? (Reply with \"exit\" if you do not want to send any update)")
-                                        msg.channel.awaitMessages(m => m.author.id, {max: 1}).then(collected => {
-                                            msg.channel.send(collected.first().content)
-                                            if (collected.first().content.toLowerCase() == "exit") {
+                                        msg.channel.awaitMessages(m => m.author.id == author, {max: 1}).then(collected2 => {
+                                            msg.channel.send(collected2.first().content)
+                                            if (collected2.first().content.toLowerCase() == "exit") {
                                                 msg.channel.send("Goodbye then!")
                                                 return
                                             }
                                             else {
-                                                update = client.channels.cache.get(collected.first().content)
-/*                                                 hitpointModel.findOne({userID: hooman}).then(users => {
+                                                update = client.channels.cache.get(collected2.first().content)
+                                                hitpointModel.findOne({userID: hooman}).then(users => {
                                                     if (users) {
                                                         cond = [];
                                                         if (users.conditions.blinded == "yes") {
@@ -279,7 +280,7 @@ module.exports.run = async(client, msg, args) => {
                                                         .setThumbnail(`${url}`);
                                                         update.send(embed);
                                                     }
-                                                }) */
+                                                })
                                             }
                                         })
                                     }

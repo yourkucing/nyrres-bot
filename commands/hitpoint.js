@@ -142,16 +142,53 @@ module.exports.run = async(client, msg, args) => {
                     msg.channel.send(`How much?`)
                     msg.channel.awaitMessages(m => m.author.id == author, {max: 1}).then(collected => {
                         number = parseInt(collected.first().content)
-                        msg.channel.send(number)
                         if (change == "exp") {
                             hitpointModel.findOneAndUpdate({userID: hooman},
                                 {
                                     $inc: { 
                                         experience: number
                                     }
+                                },
+                                {
+                                    returnNewDocument: true
                                 }).then(change => {
                                     if (change) {
                                         msg.channel.send("EXP changed!")
+                                        for (x in hplist) {
+                                            if (change.level == hplist[x].level) {
+                                                exp = hplist[x].exp
+                                            }
+                                        } 
+                                        if (change.experience >= exp) {
+                                            hitpointModel.findOneAndUpdate({userID: hooman},
+                                                {
+                                                    $set: {
+                                                        level: change.level + 1
+                                                    }
+                                                }).then(updatelevel => {
+                                                    if (updatelevel) {
+                                                        profileModel.findOneAndUpdate({userID: hooman},{
+                                                            $set: {
+                                                                level: change.level + 1
+                                                            }
+                                                        }).then(updatelevel2 => {
+                                                            if (updatelevel2) {
+                                                                msg.channel.send(`Which channel ID do you want to send the update to? (Reply with "exit" if you do not want to send any update)`)
+                                                                msg.channel.awaitMessages(m => m.author.id == author, {max: 1}).then(collected2 => {
+                                                                    if (collected2.first().content.toLowerCase() == "exit") {
+                                                                        msg.channel.send("Goodbye then!")
+                                                                        return
+                                                                    }
+                                                                    else {
+                                                                        update = client.channels.cache.get(collected2.first().content)
+                                                                        update.send(`<@${hooman}>, you have leveled up to level ${change.level + 1}! Do ask your DM if you have any changes to your character.`)
+                                                                    }
+                                                                })
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                        }
                                     }
                                     else {
                                         console.log("Something went wrong when changing EXP.")
@@ -170,7 +207,6 @@ module.exports.run = async(client, msg, args) => {
                                         msg.channel.send("HP changed!")
                                         msg.channel.send("Which channel ID do you want to send the update to? (Reply with \"exit\" if you do not want to send any update)")
                                         msg.channel.awaitMessages(m => m.author.id == author, {max: 1}).then(collected2 => {
-                                            msg.channel.send(collected2.first().content)
                                             if (collected2.first().content.toLowerCase() == "exit") {
                                                 msg.channel.send("Goodbye then!")
                                                 return

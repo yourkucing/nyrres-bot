@@ -15,12 +15,14 @@ module.exports.run = async(client, msg, args) => {
             mount = await inventoryModel.find({userID: hooman, category: 'mount'})
             pet = await inventoryModel.find({userID: hooman, category: 'pet'})
             consumable = await inventoryModel.find({userID: hooman, category: 'consumable'})
+            space = await inventoryModel.findOne({userID: hooman, category: 'space'})
 
             weaponlist = ''
             equipmentlist = ''
             mountlist = ''
             petlist = ''
             consumablelist = ''
+            space = parseInt(space.item)
 
             if (weapon.length == 0) {
                 weaponlist = 'No weapons.'
@@ -67,7 +69,7 @@ module.exports.run = async(client, msg, args) => {
             const embed = new Discord.MessageEmbed()
             .setColor('#FF69B4')
             .setTitle(`**${profileData.characterName}'s** Inventory`)
-            .setDescription('You can see your inventory here.')
+            .setDescription(`Inventory space: ${space}/${space}`)
             .addFields(
             { name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``, inline: true},
             { name: `:mage: Equipments`, value: `\`${equipmentlist}\``, inline: true},

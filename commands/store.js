@@ -35,7 +35,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in equipment) {
-                equipmentlist += equipment[x].item + '\nDescription: ' + equipment[x].description + '\n' + equipment[x].price.copper + 'CP ' + equipment[x].price.silver + 'SP ' + equipment[x].price.electrum + 'EP ' + equipment[x].price.gold + 'GP ' + equipment[x].price.platinum + 'PP\n\n'
+                equipmentlist += '**' + equipment[x].item + '**\nDescription: ' + equipment[x].description + '\n\`' + equipment[x].price.copper + 'CP ' + equipment[x].price.silver + 'SP ' + equipment[x].price.electrum + 'EP ' + equipment[x].price.gold + 'GP ' + equipment[x].price.platinum + 'PP\`\n\n'
             }
         }
         if (mount.length == 0) {
@@ -43,7 +43,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in mount) {
-                mountlist += mount[x].item + '\nDescription: ' + mount[x].description + '\n' + mount[x].price.copper + 'CP ' + mount[x].price.silver + 'SP ' + mount[x].price.electrum + 'EP ' + mount[x].price.gold + 'GP ' + mount[x].price.platinum + 'PP\n\n'
+                mountlist += '**' + mount[x].item + '**\nDescription: ' + mount[x].description + '\n\`' + mount[x].price.copper + 'CP ' + mount[x].price.silver + 'SP ' + mount[x].price.electrum + 'EP ' + mount[x].price.gold + 'GP ' + mount[x].price.platinum + 'PP\`\n\n'
             }
         }
         if (pet.length == 0) {
@@ -51,7 +51,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in pet) {
-                petlist += pet[x].item + '\nDescription: ' + pet[x].description + '\n' + pet[x].price.copper + 'CP ' + pet[x].price.silver + 'SP ' + pet[x].price.electrum + 'EP ' + pet[x].price.gold + 'GP ' + pet[x].price.platinum + 'PP\n\n'
+                petlist += '**' + pet[x].item + '**\nDescription: ' + pet[x].description + '\n\`' + pet[x].price.copper + 'CP ' + pet[x].price.silver + 'SP ' + pet[x].price.electrum + 'EP ' + pet[x].price.gold + 'GP ' + pet[x].price.platinum + 'PP\`\n\n'
             }
         }
         if (consumable.length == 0) {
@@ -59,7 +59,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in consumable) {
-                consumablelist += consumable[x].item + '\nDescription: ' + consumable[x].description + '\n' + consumable[x].price.copper + 'CP ' + consumable[x].price.silver + 'SP ' + consumable[x].price.electrum + 'EP ' + consumable[x].price.gold + 'GP ' + consumable[x].price.platinum + 'PP\n\n'
+                consumablelist += '**' + consumable[x].item + '**\nDescription: ' + consumable[x].description + '\n\`' + consumable[x].price.copper + 'CP ' + consumable[x].price.silver + 'SP ' + consumable[x].price.electrum + 'EP ' + consumable[x].price.gold + 'GP ' + consumable[x].price.platinum + 'PP\`\n\n'
             }
         }
 
@@ -106,28 +106,28 @@ module.exports.run = async(client, msg, args) => {
                     embed.fields = []
                     if (page == 1) {
                         embed.addFields(
-                            { name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``}
+                            { name: `:crossed_swords: Weapons`, value: `${weaponlist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 2) {
                         embed.addFields(
-                            { name: `:mage: Equipments`, value: `\`${equipmentlist}\``}
+                            { name: `:mage: Equipments`, value: `${equipmentlist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 4) {
                         embed.addFields(
-                            { name: `:racehorse: Mounts`, value: `\`${mountlist}\``}
+                            { name: `:racehorse: Mounts`, value: `${mountlist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 3) {
                         embed.addFields(
-                            { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``}
+                            { name: `:sandwich: Consumables`, value: `${consumablelist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
@@ -145,28 +145,28 @@ module.exports.run = async(client, msg, args) => {
                     embed.fields = []
                     if (page == 2) {
                         embed.addFields(
-                            { name: `:mage: Equipments`, value: `\`${equipmentlist}\``}
+                            { name: `:mage: Equipments`, value: `${equipmentlist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 4) {
                         embed.addFields(
-                            { name: `:racehorse: Mounts`, value: `\`${mountlist}\``}
+                            { name: `:racehorse: Mounts`, value: `${mountlist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 3) {
                         embed.addFields(
-                            { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``}
+                            { name: `:sandwich: Consumables`, value: `${consumablelist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)
                     }
                     else if (page == 5) {
                         embed.addFields(
-                            { name: `:wolf: Pets`, value: `\`${petlist}\``}
+                            { name: `:wolf: Pets`, value: `${petlist}`}
                         )
                         embed.setFooter(`Page ${page} of 5.`);
                         msg.edit(embed)

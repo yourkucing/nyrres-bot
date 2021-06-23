@@ -11,15 +11,15 @@ module.exports.run = async(client, msg, args) => {
     else {
         if (!args[0]) {
             weapon = await inventoryModel.find({userID: hooman, category: 'weapon'})
-            used1 = await inventoryModel.find({userID: hooman, category: 'weapon'}).count()
+            used1 = await inventoryModel.find({userID: hooman, category: 'weapon'}).countDocuments()
             equipment = await inventoryModel.find({userID: hooman, category: 'equipment'})
-            used2 = await inventoryModel.find({userID: hooman, category: 'equipment'}).count()
+            used2 = await inventoryModel.find({userID: hooman, category: 'equipment'}).countDocuments()
             mount = await inventoryModel.find({userID: hooman, category: 'mount'})
-            used3 = await inventoryModel.find({userID: hooman, category: 'mount'}).count()
+            used3 = await inventoryModel.find({userID: hooman, category: 'mount'}).countDocuments()
             pet = await inventoryModel.find({userID: hooman, category: 'pet'})
-            used4 = await inventoryModel.find({userID: hooman, category: 'pet'}).count()
+            used4 = await inventoryModel.find({userID: hooman, category: 'pet'}).countDocuments()
             consumable = await inventoryModel.find({userID: hooman, category: 'consumable'})
-            used5 = await inventoryModel.find({userID: hooman, category: 'consumable'}).count()
+            used5 = await inventoryModel.find({userID: hooman, category: 'consumable'}).countDocuments()
             space = await inventoryModel.findOne({userID: hooman, category: 'space'})
 
             used = used1 + used2 + used3 + used4 + used5

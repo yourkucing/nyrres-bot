@@ -167,6 +167,120 @@ module.exports.run = async(client, msg, args) => {
                                 }).then(change => {
                                     if (change) {
                                         msg.channel.send("HP changed!")
+                                        msg.channel.send("Which channel ID do you want to send the update to? (Reply with \"exit\" if you do not want to send any update)")
+                                        msg.channel.awaitMessages(m => m.author.id, {max: 1}).then(collected => {
+                                            if (collected.first().content.toLowerCase() == "exit") {
+                                                msg.channel.send("Goodbye then!")
+                                                return
+                                            }
+                                            else {
+                                                update = client.channels.cache.get(collected.first().content)
+                                                hitpointModel.findOne({userID: hooman}).then(users => {
+                                                    if (users) {
+                                                        cond = [];
+                                                        if (users.conditions.blinded == "yes") {
+                                                            cond.push("Blinded")
+                                                        }
+                                                        if (users.conditions.charmed == "yes") {
+                                                            cond.push("Charmed")
+                                                        }
+                                                        if (users.conditions.deafened == "yes") {
+                                                            cond.push("Deafened")
+                                                        }
+                                                        if (users.conditions.frightened == "yes") {
+                                                            cond.push("Frightened")
+                                                        }
+                                                        if (users.conditions.grappled == "yes") {
+                                                            cond.push("Grappled")
+                                                        }
+                                                        if (users.conditions.incapacitated == "yes") {
+                                                            cond.push("Incapacitated")
+                                                        }
+                                                        if (users.conditions.invisible == "yes") {
+                                                            cond.push("Invisible")
+                                                        }
+                                                        if (users.conditions.paralyzed == "yes") {
+                                                            cond.push("Paralyzed")
+                                                        }
+                                                        if (users.conditions.petrified == "yes") {
+                                                            cond.push("Petrified")
+                                                        }
+                                                        if (users.conditions.poisoned == "yes") {
+                                                            cond.push("Poisoned")
+                                                        }
+                                                        if (users.conditions.prone == "yes") {
+                                                            cond.push("Prone")
+                                                        }
+                                                        if (users.conditions.restrained == "yes") {
+                                                            cond.push("Restrained")
+                                                        }
+                                                        if (users.conditions.stunned == "yes") {
+                                                            cond.push("Stunned")
+                                                        }
+                                                        if (users.conditions.unconscious == "yes") {
+                                                            cond.push("Unconscious")
+                                                        }
+                                                        if (users.conditions.exhaustion == "yes") {
+                                                            cond.push("Exhaustion")
+                                                        }
+                                                
+                                                        if (cond.length < 1) {
+                                                            cond.push("You have no conditions currently.")
+                                                        }
+                                                
+                                                        exp = 0
+                                                        hpbar = '░░░░░░░░░░'
+                                                
+                                                        hpdiff = (users.HP / users.maxHP) * 100
+                                                
+                                                        if (hpdiff == 0) {
+                                                            hpbar = '░░░░░░░░░░'
+                                                        }
+                                                        else if (hpdiff > 0 && hpdiff <= 10) {
+                                                            hpbar = '█░░░░░░░░░'
+                                                        }
+                                                        else if (hpdiff > 10 && hpdiff <= 20) {
+                                                            hpbar = '██░░░░░░░░'
+                                                        }
+                                                        else if (hpdiff > 20 && hpdiff <= 30) {
+                                                            hpbar = '███░░░░░░░'
+                                                        }
+                                                        else if (hpdiff > 30 && hpdiff <= 40) {
+                                                            hpbar = '████░░░░░░'
+                                                        }
+                                                        else if (hpdiff > 40 && hpdiff <= 50) {
+                                                            hpbar = '█████░░░░░'
+                                                        }
+                                                        else if (hpdiff > 50 && hpdiff <= 60) {
+                                                            hpbar = '██████░░░░'
+                                                        }
+                                                        else if (hpdiff > 60 && hpdiff <= 70) {
+                                                            hpbar = '███████░░░'
+                                                        }
+                                                        else if (hpdiff > 70 && hpdiff <= 80) {
+                                                            hpbar = '████████░░'
+                                                        }
+                                                        else if (hpdiff > 80 && hpdiff <= 90) {
+                                                            hpbar = '█████████░'
+                                                        }
+                                                        else if (hpdiff > 90 && hpdiff <= 100) {
+                                                            hpbar = '██████████'
+                                                        }
+                                                
+                                                        url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
+                                                        const embed = new Discord.MessageEmbed()
+                                                        .setColor('#FF69B4')
+                                                        .setTitle(`**${users.characterName}'s** HP`)
+                                                        .addFields(
+                                                        { name: `Health Points`, value: `HP: ${users.HP}/${users.maxHP}\n${hpbar}`},
+                                                        { name: `Conditions`, value: `${cond}`}
+                                                        )
+                                                        .setThumbnail(`${url}`);
+                                                        update.send(embed);
+                                                    }
+                                                })
+                                            }
+                                        })
                                     }
                                     else {
                                         console.log("Something went wrong when changing HP.")

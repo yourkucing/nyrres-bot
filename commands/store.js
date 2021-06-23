@@ -27,7 +27,7 @@ module.exports.run = async(client, msg, args) => {
         }
         else {
             for (x in weapon) {
-                weaponlist += weapon[x].item + '\nDescription: ' + weapon[x].description + '\n' + weapon[x].price.copper + 'CP ' + weapon[x].price.silver + 'SP ' + weapon[x].price.electrum + 'EP ' + weapon[x].price.gold + 'GP ' + weapon[x].price.platinum + 'PP\n\n'
+                weaponlist += '**' + weapon[x].item + '**\nDescription: ' + weapon[x].description + '\n\`' + weapon[x].price.copper + 'CP ' + weapon[x].price.silver + 'SP ' + weapon[x].price.electrum + 'EP ' + weapon[x].price.gold + 'GP ' + weapon[x].price.platinum + 'PP\`\n\n'
             }
         }
         if (equipment.length == 0) {
@@ -76,7 +76,7 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`Tayo's Market`)
 		.setDescription(`You can purchase items here.\n\`Click on the arrow reactions to change pages. Once you're done, you can click on the STOP reaction.\``)
 		.addFields(
-		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\`\nPotata\nDescription: Throw at Noa\n0CP 2SP 0EP 0GP 0PP`}
+		{ name: `:crossed_swords: Weapons`, value: `${weaponlist}`}
 		)
         .setThumbnail(`${url}`)
         .setFooter(`Page ${page} of 5.`);

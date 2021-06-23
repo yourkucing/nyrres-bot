@@ -11,13 +11,18 @@ module.exports.run = async(client, msg, args) => {
     else {
         if (!args[0]) {
             weapon = await inventoryModel.find({userID: hooman, category: 'weapon'})
+            used1 = await inventoryModel.find({userID: hooman, category: 'weapon'}).count()
             equipment = await inventoryModel.find({userID: hooman, category: 'equipment'})
+            used2 = await inventoryModel.find({userID: hooman, category: 'equipment'}).count()
             mount = await inventoryModel.find({userID: hooman, category: 'mount'})
+            used3 = await inventoryModel.find({userID: hooman, category: 'mount'}).count()
             pet = await inventoryModel.find({userID: hooman, category: 'pet'})
+            used4 = await inventoryModel.find({userID: hooman, category: 'pet'}).count()
             consumable = await inventoryModel.find({userID: hooman, category: 'consumable'})
+            used5 = await inventoryModel.find({userID: hooman, category: 'consumable'}).count()
             space = await inventoryModel.findOne({userID: hooman, category: 'space'})
 
-            used = 0
+            used = used1 + used2 + used3 + used4 + used5
             weaponlist = ''
             equipmentlist = ''
             mountlist = ''
@@ -31,7 +36,6 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in weapon) {
                     weaponlist += weapon[x].item + '\n'
-                    
                 }
             }
             if (equipment.length == 0) {
@@ -40,7 +44,6 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in equipment) {
                     equipmentlist += equipment[x].item + '\n'
-                    used += used
                 }
             }
             if (mount.length == 0) {
@@ -49,7 +52,6 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in mount) {
                     mountlist += mount[x].item + '\n'
-                    used += used
                 }
             }
             if (pet.length == 0) {
@@ -58,7 +60,6 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in pet) {
                     petlist += pet[x].item + '\n'
-                    used += used
                 }
             }
             if (consumable.length == 0) {
@@ -67,7 +68,6 @@ module.exports.run = async(client, msg, args) => {
             else {
                 for (x in consumable) {
                     consumablelist += consumable[x].item + '\n'
-                    used += used
                 }
             }
 

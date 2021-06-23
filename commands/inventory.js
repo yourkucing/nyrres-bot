@@ -20,9 +20,14 @@ module.exports.run = async(client, msg, args) => {
             used4 = await inventoryModel.find({userID: hooman, category: 'pet'}).countDocuments()
             consumable = await inventoryModel.find({userID: hooman, category: 'consumable'})
             used5 = await inventoryModel.find({userID: hooman, category: 'consumable'}).countDocuments()
-            space = await inventoryModel.findOne({userID: hooman, category: 'space'})
+            quiver = await inventoryModel.findOne({userID: hooman, category: 'quiver'})
+            used6 = await inventoryModel.find({userID: hooman, category: 'quiver'}).countDocuments()
 
-            used = used1 + used2 + used3 + used4 + used5
+            space = await inventoryModel.findOne({userID: hooman, category: 'space'})
+            
+
+            used = used1 + used2 + used3 + used4 + used5 + used6
+            quivers = ''
             weaponlist = ''
             equipmentlist = ''
             mountlist = ''
@@ -70,14 +75,20 @@ module.exports.run = async(client, msg, args) => {
                     consumablelist += consumable[x].item + '\n'
                 }
             }
+            if (quiver.length == 0) {
+                quivers = 0
+            }
+            else {
+                quivers = `${parseInt(quiver.item)} Quivers\n`
+            }
 
             url = `https://cdn.discordapp.com/avatars/${hooman}/${msg.author.avatar}.png`
             const embed = new Discord.MessageEmbed()
             .setColor('#FF69B4')
             .setTitle(`**${profileData.characterName}'s** Inventory`)
-            .setDescription(`Inventory space: ${space - used}/${space}`)
+            .setDescription(`Inventory space left: ${space - used}/${space}`)
             .addFields(
-            { name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``, inline: true},
+            { name: `:crossed_swords: Weapons`, value: `\`${weaponlist + quivers}\``, inline: true},
             { name: `:mage: Equipments`, value: `\`${equipmentlist}\``, inline: true},
             { name: `:sandwich: Consumables`, value: `\`${consumablelist}\``, inline: false},
             { name: `:racehorse: Mounts`, value: `\`${mountlist}\``, inline: true},

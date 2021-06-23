@@ -159,6 +159,8 @@ module.exports.run = async(client, msg, args) => {
                                                 exp = hplist[x].exp
                                             }
                                         } 
+                                        msg.channel.send(change.experience)
+                                        msg.channel.send(exp)
                                         if (change.experience >= exp) {
                                             hitpointModel.findOneAndUpdate({userID: hooman},
                                                 {

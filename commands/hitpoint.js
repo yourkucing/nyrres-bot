@@ -150,7 +150,7 @@ module.exports.run = async(client, msg, args) => {
                                     }
                                 },
                                 {
-                                    returnNewDocument: true
+                                    returnOriginal: false
                                 }).then(change => {
                                     if (change) {
                                         msg.channel.send("EXP changed!")

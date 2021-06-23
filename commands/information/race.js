@@ -5,7 +5,7 @@ module.exports.run = async(client, msg, args) => {
     .setColor('#FF69B4')
     .setTitle(`Basic Races`)
     .setDescription(`Choose your race wisely. (These are not the only races, you can add on your own if you want, but be sure to ask your DM first!
-        \nYou can get more information about the races by doing command **ny <race>**. Unfortunately, for now there is only for dragonborn cos I am tired n.n`)
+        \nYou can get more information about the races by going to: https://www.dndbeyond.com/races`)
     .addFields(
     { name: 'Dragonborn', value: `Dragonborn look very much like dragons standing erect in humanoid form, though the lack the wings or tail.\n\nRacial traits:\n +2 Strength, +1 Charisma, Draconic Ancestry, Breath Weapon, Damage Resistance`},
     { name: `Dwarf`, value: `Bold and hardy, dwarves are known as skilled warriors, miners and workers of stone and metal.\n\nRacial traits:\n+2 Constitution, Darkvision, Dwarven, Resilience, Dwarven Combat Training, Stonecunning`},

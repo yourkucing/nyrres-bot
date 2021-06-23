@@ -5,7 +5,7 @@ module.exports.run = async(client, msg, args) => {
     .setColor('#FF69B4')
     .setTitle(`Basic Classes`)
     .setDescription(`Choose your class wisely. (These are not the only classes, you can add on your own if you want, but be sure to ask your DM first!
-        \nYou can get more information about the classes by doing command **ny <class>**. Unfortunately, for now there is none cos I am tired n.n`)
+        \nYou can get more information about the classes by going to: https://www.dndbeyond.com/classes`)
     .addFields(
     { name: 'Barbarian', value: `A fierce warrior of primitive background who can enter a battle rage.\n\nHit die: d12\nPrimary Ability: Strength\nSaves: Strength & Constitution`},
     { name: `Bard`, value: `An inspiring magician whose power echoes the music of creation.\n\nHit die: d8\nPrimary Ability: Charisma\nSaves: Dexterity & Charisma`},

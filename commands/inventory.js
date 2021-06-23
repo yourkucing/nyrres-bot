@@ -75,7 +75,7 @@ module.exports.run = async(client, msg, args) => {
                     consumablelist += consumable[x].item + '\n'
                 }
             }
-            if (quiver.length == 0) {
+            if (!quiver) {
                 quivers = 0
             }
             else {

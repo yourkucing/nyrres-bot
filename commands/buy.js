@@ -11,13 +11,20 @@ module.exports.run = async(client, msg, args) => {
     words = words.trim()
     storeData = await storeModel.findOne({item: words})
     moneyData = await moneyModel.findOne({userID: hooman.id})
+    inventoryData = await inventoryModel.find({userID: hooman.id}).countDocuments()
 
     if (!moneyData) {
         msg.channel.send(`Oh, ${hooman}, it appears you do not have a character yet. You can create one using the command: \`ny create\``)
+        return
     }
     else {
         if (!storeData) {
             msg.channel.send(`Oh, we don't sell such an item!`)
+            return
+        }
+        else if (inventoryData == 51) {
+            msg.channel.send(`You do not have enough space in your `)
+            return
         }
         else {
             money = ''
@@ -66,15 +73,53 @@ module.exports.run = async(client, msg, args) => {
                                         }
                                     }
                                 })
-
-                    inventory = inventoryModel.create({
-                        userID: hooman.id,
-                        serverID: guild,
-                        characterName: moneyData.characterName,
-                        item: storeData.item,
-                        category: storeData.category
-                    })
-                    msg.channel.send(`\`${money}has been deducted from ${moneyData.characterName}.\``)
+                    
+                    if (words == "Quiver (20)") {
+                        inventoryModel.findOne({
+                            userID: hooman.id,
+                            category: "quiver"
+                        }).then(quiverno => {
+                            if(quiverno) {
+                                totalquiv = parseInt(quiverno.item) + 20
+                                inventoryModel.findOneAndUpdate({
+                                    userID: hooman.id,
+                                    category: "quiver"
+                                },
+                                {
+                                    $set: {
+                                        item: totalquiv
+                                    }
+                                }).then(success => {
+                                    if (success) {
+                                        msg.channel.send(`\`${money}has been deducted from ${moneyData.characterName}.\``)
+                                    }
+                                    else {
+                                        msg.channel.send(`\`Something went wrong, please try again.\``)
+                                        return
+                                    }
+                                })
+                            }
+                            else {
+                                inventory = inventoryModel.create({
+                                    userID: hooman.id,
+                                    serverID: guild,
+                                    characterName: moneyData.characterName,
+                                    item: "20",
+                                    category: "quiver"
+                                })
+                            }
+                        })
+                    }
+                    else {
+                        inventory = inventoryModel.create({
+                            userID: hooman.id,
+                            serverID: guild,
+                            characterName: moneyData.characterName,
+                            item: storeData.item,
+                            category: storeData.category
+                        })
+                        msg.channel.send(`\`${money}has been deducted from ${moneyData.characterName}.\``)
+                    }
                 }
             } catch(err) {
                 console.log(err)

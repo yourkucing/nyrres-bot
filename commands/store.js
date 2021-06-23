@@ -76,7 +76,7 @@ module.exports.run = async(client, msg, args) => {
 		.setTitle(`Tayo's Market`)
 		.setDescription(`You can purchase items here.\n\`Click on the arrow reactions to change pages. Once you're done, you can click on the STOP reaction.\``)
 		.addFields(
-		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\``}
+		{ name: `:crossed_swords: Weapons`, value: `\`${weaponlist}\`\nPotata\nDescription: Throw at Noa\n0CP 2SP 0EP 0GP 0PP`}
 		)
         .setThumbnail(`${url}`)
         .setFooter(`Page ${page} of 5.`);

@@ -35,58 +35,56 @@ module.exports.run = async(client, msg, args) => {
             else if (curr == "pp") {
                 num = num * 1000
             }
-            else {
-                tMoney = num + taggedUser.money.copper + 10 * taggedUser.money.silver + 50 * taggedUser.money.electrum + 100 * taggedUser.money.gold + 1000 * taggedUser.money.platinum
-                mMoney = mainUser.money.copper + 10 * mainUser.money.silver + 50 * mainUser.money.electrum + 100 * mainUser.money.gold + 1000 * mainUser.money.platinum - num
-                
-                platinum = Math.floor(tMoney/1000)
-                tMoney -= (platinum * 1000)
-                gold = Math.floor(tMoney/100)
-                tMoney -= (gold * 100)
-                electrum = Math.floor(tMoney/50)
-                tMoney -= (electrum * 50)
-                silver = Math.floor(tMoney/10)
-                copper = tMoney - (silver * 10)
+            tMoney = num + taggedUser.money.copper + 10 * taggedUser.money.silver + 50 * taggedUser.money.electrum + 100 * taggedUser.money.gold + 1000 * taggedUser.money.platinum
+            mMoney = mainUser.money.copper + 10 * mainUser.money.silver + 50 * mainUser.money.electrum + 100 * mainUser.money.gold + 1000 * mainUser.money.platinum - num
+            
+            platinum = Math.floor(tMoney/1000)
+            tMoney -= (platinum * 1000)
+            gold = Math.floor(tMoney/100)
+            tMoney -= (gold * 100)
+            electrum = Math.floor(tMoney/50)
+            tMoney -= (electrum * 50)
+            silver = Math.floor(tMoney/10)
+            copper = tMoney - (silver * 10)
 
-                moneyModel.findOneAndUpdate({userID: tagged.id}, {
-                    $set: {
-                        money: {
-                            copper: copper,
-                            silver: silver,
-                            electrum: electrum,
-                            gold: gold,
-                            platinum: platinum
+            moneyModel.findOneAndUpdate({userID: tagged.id}, {
+                $set: {
+                    money: {
+                        copper: copper,
+                        silver: silver,
+                        electrum: electrum,
+                        gold: gold,
+                        platinum: platinum
+                    }
+                }
+            }).then(tUpdate => {
+                if (tUpdate) {
+                    platinum = Math.floor(mMoney/1000)
+                    mMoney -= (platinum * 1000)
+                    gold = Math.floor(mMoney/100)
+                    mMoney -= (gold * 100)
+                    electrum = Math.floor(mMoney/50)
+                    mMoney -= (electrum * 50)
+                    silver = Math.floor(mMoney/10)
+                    copper = mMoney - (silver * 10)
+
+                    moneyModel.findOneAndUpdate({userID: hooman}, {
+                        $set: {
+                            money: {
+                                copper: copper,
+                                silver: silver,
+                                electrum: electrum,
+                                gold: gold,
+                                platinum: platinum
+                            }
                         }
-                    }
-                }).then(tUpdate => {
-                    if (tUpdate) {
-                        platinum = Math.floor(mMoney/1000)
-                        mMoney -= (platinum * 1000)
-                        gold = Math.floor(mMoney/100)
-                        mMoney -= (gold * 100)
-                        electrum = Math.floor(mMoney/50)
-                        mMoney -= (electrum * 50)
-                        silver = Math.floor(mMoney/10)
-                        copper = mMoney - (silver * 10)
-
-                        moneyModel.findOneAndUpdate({userID: hooman}, {
-                            $set: {
-                                money: {
-                                    copper: copper,
-                                    silver: silver,
-                                    electrum: electrum,
-                                    gold: gold,
-                                    platinum: platinum
-                                }
-                            }
-                        }).then(mUpdate => {
-                            if (mUpdate) {
-                                msg.channel.send(`Money has been transferred!`)
-                            }
-                        })
-                    }
-                })
-            }
+                    }).then(mUpdate => {
+                        if (mUpdate) {
+                            msg.channel.send(`Money has been transferred!`)
+                        }
+                    })
+                }
+            })
         }
     }
 }

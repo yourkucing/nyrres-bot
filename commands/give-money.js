@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports.run = async(client, msg, args) => {
     let hooman = msg.author.id
     if (!msg.mentions.users.size) {
-        msg.channel.send(`Who are you giving stuffs to?`)
+        msg.channel.send(`Who are you giving money to?`)
         return
     }
     else {
@@ -12,6 +12,7 @@ module.exports.run = async(client, msg, args) => {
         taggedUser = await moneyModel.findOne({userID: tagged.id})
         mainUser = await moneyModel.findOne({userID: hooman})
         item = args.slice(1).join("")
+        msg.channel.send(item.size)
         if (item.size == 0) {
             msg.channel.send(`How much are you giving? Please retry.`)
             return

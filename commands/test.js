@@ -7,15 +7,14 @@ const xiv = new XIVAPI({
 
 module.exports.run = async(client, msg, args) => {
     item = args.join(" ")
-    msg.channel.send(item)
     let res = await xiv.search(item)
     const embed = new MessageEmbed()
     .setColor('#FF69B4')
     .setTitle(`**Results for ${item}:**`)
     .setDescription(`Found: ${res.pagination.results_total}`)
-    .setThumbnail(res.results.icon)
+    .setThumbnail(res.results[0].icon)
     .addFields(
-        { name: res.results.name, value: res.results.url}
+        { name: `${res.results[0].name}`, value: `${res.results[0].url}`}
     )
     .setFooter(`Page ${res.pagination.page} of ${res.pagination.page_total}`);
     msg.channel.send({embeds: [embed]});

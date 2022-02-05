@@ -6,6 +6,7 @@ const xiv = new XIVAPI({
   })
 
 module.exports.run = async(client, msg, args) => {
+    msg.channel.send("hello")
     item = args.join(" ")
     let res = await xiv.search(item)
     msg.channel.send(res.Results[0].ID)

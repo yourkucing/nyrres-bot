@@ -24,7 +24,7 @@ client.on('ready', () => {
     client.user.setActivity('ny help', { type: 'STREAMING' });
  });
 
- client.on('message', msg => {
+ client.on('messageCreate', msg => {
     if (msg.author.bot) return
 
     var message = msg.content.toLowerCase()

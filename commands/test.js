@@ -12,9 +12,9 @@ module.exports.run = async(client, msg, args) => {
     .setColor('#FF69B4')
     .setTitle(`**Results for ${item}:**`)
     .setDescription(`Found: ${res.pagination.results_total}`)
-    .setThumbnail(res.results[0].icon)
+    .setThumbnail(`https://xivapi.com${res.results[0].icon}`)
     .addFields(
-        { name: `${res.results[0].name}`, value: `${res.results[0].url}`}
+        { name: `${res.results[0].name}`, value: `https://xivapi.com${res.results[0].url}`}
     )
     .setFooter(`Page ${res.pagination.page} of ${res.pagination.page_total}`);
     msg.channel.send({embeds: [embed]});

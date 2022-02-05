@@ -4,6 +4,7 @@ const prefix = "ny ";
 const fs = require('fs').promises;
 const path = require('path');
 const mongoose = require('mongoose');
+const fetch = require('node-fetch');
 
 client.commands = new Map();
 

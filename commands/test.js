@@ -1,5 +1,6 @@
 const { Client, Intents, MessageEmbed, Permissions } = require('discord.js');
 const XIVAPI = require('@xivapi/js')
+const fetch = require('node-fetch');
 const xiv = new XIVAPI({
     private_key: process.env.ffxiv,
     snake_case: true
